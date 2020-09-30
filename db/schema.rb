@@ -10,10 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_30_100505) do
 
-
-ActiveRecord::Schema.define(version: 2020_09_30_083531) do
+ActiveRecord::Schema.define(version: 2020_09_30_082626) do
 
   create_table "cart_products", force: :cascade do |t|
     t.integer "product_id"
@@ -47,7 +45,6 @@ ActiveRecord::Schema.define(version: 2020_09_30_082154) do
   end
 
 
-
   create_table "customers", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -70,6 +67,24 @@ ActiveRecord::Schema.define(version: 2020_09_30_082154) do
   end
 
 
+  create_table "orders", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "shipping_cost"
+    t.integer "total_price"
+    t.integer "payment_method"
+    t.string "name"
+    t.string "postal_code"
+    t.string "address"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "product_genres", force: :cascade do |t|
+    t.integer "name", default: 0
+    t.boolean "is_active", default: true
+
+
   create_table "products", force: :cascade do |t|
     t.boolean "products", default: true
     t.integer "genre_id"
@@ -85,6 +100,7 @@ ActiveRecord::Schema.define(version: 2020_09_30_082154) do
     t.integer "quantity"
     t.integer "making_status"
     t.integer "taxed_price"
+
 
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
