@@ -1,0 +1,24 @@
+<h2>ジャンル一覧・追加</h2>
+
+<%= form_for(@product_genre) do |f| %>
+
+	<% if @product_genre.errors.any? %>
+	  <div>
+	    <ul style="color: red">
+	      <% @product_genre.errors.full_messages.each do |message| %>
+	        <li>error : <%= message %></li>
+	      <% end %>
+	    </ul>
+	  </div>
+	<% end %>
+
+
+	<div class="field row">
+		<%= f.label :name, "ジャンル" %>
+		<%= f.text_field :name %>
+		<%= f.select :name, Menu.mains.keys, :selected=>Menu.mains[@menu.main] %>
+	</div>
+	<div class="actions row">
+		<%= f.submit class: "btn btn-primary col-xs-12" %>
+	</div>
+<% end %>
