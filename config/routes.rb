@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :admins,
   controllers: {
   	sessions: 'devise/admins/sessions'
@@ -10,5 +11,6 @@ Rails.application.routes.draw do
   	registrations: 'devise/customers/registrations',
   	sessions: 'devise/customers/sessions'
   }
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
