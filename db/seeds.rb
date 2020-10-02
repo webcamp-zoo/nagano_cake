@@ -1,3 +1,4 @@
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -13,3 +14,11 @@ table_names.each do |table_name|
     require path
   end
 end
+
+
+Admin.create!(
+    email: "admins@example.com",
+    password: "admins",
+    password_confirmation: "admins"
+  )
+
