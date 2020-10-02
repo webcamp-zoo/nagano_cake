@@ -1,0 +1,52 @@
+<table class="table table-striped">
+    <tbody>
+        <tr>
+            <td>顧客ID</td>
+            <td><%= @customer.id %></td>
+            
+            <td>
+                <% if @customer.is_deleted ==true %>
+                    <td>有効会員</td>
+                <% else %>
+                    <td>無効会員</td>
+                <% end %>
+            </td>
+        </tr>
+
+        <tr>
+            <td>氏名</td>
+            <td><%= @customer.last_name%><%= @customer.first_name %></td>
+        </tr>
+
+        <tr>
+            <td>フリガナ</td>
+            <td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
+        </tr>
+
+        <tr>
+            <td>郵便番号</td>
+            <td><%= @customer.postal_code %></td>
+        </tr>
+
+        <tr>
+            <td>住所</td>
+            <td><%= @customer.address %></td>
+        </tr>
+
+        <tr>
+            <td>電話番号</td>
+            <td><%= @customer.phone_number %></td>
+        </tr>
+
+        <tr>
+            <td>メールアドレス</td>
+            <td><%= @customer.email %></td>
+        </tr>
+
+        <tr>
+            <td>編集する</td>
+            <td>注文する</td>
+        </tr>
+
+    </tbody>
+</table>
