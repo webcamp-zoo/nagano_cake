@@ -1,0 +1,28 @@
+ <h2>商品新規登録</h2>
+    <%= form_for[:admin, @product] do |f| %>
+
+	    <% if @product.errors.any? %>
+			<div>
+			    <ul style="color: red">
+			       <% @product.errors.full_messages.each do |message| %>
+			         <li>error : <%= message %></li>
+			       <% end %>
+			    </ul>
+			</div>
+		<% end %>
+
+	    <%= f.attachment_field :image %>
+
+		<%= f.label :"商品名" %>
+		<%= f.text_field :name %>
+		<%= f.label :"商品説明" %>
+		<%= f.text_area :introduction %>
+		<%= f.label :"ジャンル" %>
+		<%= f.collection_select(:genre_id, @genres, :id, :name) %>
+		<%= f.label :"税抜価格" %>
+		<%= f.text_field :price %>円
+		<%= f.label :"販売ステータス"¥ %>
+		<%= f.select :is_active, [['販売中', true], ['販売停止', false]] %>
+	    <%= f.submit "新規登録" %>
+
+    <% end %>
