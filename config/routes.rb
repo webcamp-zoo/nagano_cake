@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   	registrations: 'devise/customers/registrations',
   	sessions: 'devise/customers/sessions'
   }
+  namespace :admin do
+  	resources :product_genres, only: [:index,:create,:edit,:update]
+  end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
