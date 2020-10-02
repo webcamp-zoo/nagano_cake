@@ -24,6 +24,9 @@ Rails.application.routes.draw do
   end
 
 
+  resources :addresses, except: [:show], module: 'customer'
+
+
 	get 'customer/products/top'
 
 end
