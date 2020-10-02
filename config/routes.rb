@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   controllers: {
   	sessions: 'devise/admins/sessions'
   }
+  get 'admin/products/top'
+
 
   devise_for :customers,
   controllers: {
