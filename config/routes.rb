@@ -22,8 +22,14 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :customers, only:[:show]
   end
+  
+  namespace :customer do
+    resources :customers, only:[:edit, :update]
+    get "/customers/:id/hide" => "customers#hide", as: 'customers_hide'
+    patch "/customers/:id/withdrawal" => "customers#withdrawal", as: 'customers_withdrawal'
+  end
 
 
-	get 'customer/products/top'
+  get 'customer/products/top'
 
 end
