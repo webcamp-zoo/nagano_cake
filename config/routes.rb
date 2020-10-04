@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :admins,
   controllers: {
   	sessions: 'devise/admins/sessions'
@@ -12,6 +13,14 @@ Rails.application.routes.draw do
   	registrations: 'devise/customers/registrations',
   	sessions: 'devise/customers/sessions'
   }
+  namespace :admin do
+  	resources :product_genres, only: [:index,:create,:edit,:update]
+  	resources :products, only: [:new,:create,:index,:show,:edit,:update]
+  end
+
+  namespace :customer do
+    resources :products, only: [:index,:show]
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 
