@@ -22,12 +22,16 @@ Rails.application.routes.draw do
   namespace :customer do
     resources :products, only: [:index,:show]
     resources :customers, only:[:edit, :update]
+    resources :cart_products, only:[:index, :create, :update, :destroy]
     get "/customers/:id/hide" => "customers#hide", as: 'customers_hide'
     patch "/customers/:id/withdrawal" => "customers#withdrawal", as: 'customers_withdrawal'
     resources :addresses, except: [:show]
     get 'customer/products/top'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+
+  delete '/customer/cart_products' => 'customer/cart_products#destroy_all'
 
 
 end

@@ -1,0 +1,36 @@
+<h1>ショッピングカート</h1>
+
+<%= link_to "カートを空にする", customer_cart_products_path, method: :delete %>
+<table>
+	<thead>
+		<tr>
+			<th>商品名</th>
+			<th>単価(税込)</th>
+			<th>数量</th>
+			<th>小計</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% sum = 0 %>
+		<% @cart_products.each do |cart_product| %>
+			<tr>
+				<td><%= cart_product.product.name %></td>
+				<td><%= cart_product.product.price %></td>
+				<td><%= form_for(cart_product, url: customer_cart_product_path(cart_product.id)) do |f| %>
+					<%= f.text_field :quantity %>
+					<%= f.hidden_field :product_id, value: cart_product.product.id %>
+					<%= f.submit "変更" %>
+					<% end %>
+				</td>
+				<td><%= cart_product.product.price * cart_product.quantity %></td>
+				<td><%= link_to "削除", customer_cart_product_path(cart_product.id), method: :delete %>
+				</td>
+			</tr>
+			<% sum += cart_product.product.price * cart_product.quantity %>
+		<% end %>
+	</tbody>
+</table>
+<p>合計金額</p>
+<%= sum %>
+
