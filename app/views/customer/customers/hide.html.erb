@@ -1,0 +1,5 @@
+<h2>退会ページ<h2>
+
+<% if customer_signed_in? && @customer.id == current_customer.id %>
+        <%= link_to "退会", customer_customers_withdrawal_path(current_customer), method: :patch, "data-confirm" => "本当に退会しますか？" %>
+<% end %>
