@@ -1,4 +1,4 @@
- <h2>商品新規登録</h2>
+<h2>商品編集</h2>
     <%= form_for [:admin, @product] do |f| %>
 
 	    <% if @product.errors.any? %>
@@ -28,7 +28,7 @@
 			<%= f.text_field :price %>円
 			<%= f.label :"販売ステータス" %>
 			<%= f.select :is_active, [['販売中', true], ['販売停止', false]] %>
-		    <%= f.submit "新規登録" %>
+		    <%= f.submit "変更を保存" %>
 		</div>
 
     <% end %>

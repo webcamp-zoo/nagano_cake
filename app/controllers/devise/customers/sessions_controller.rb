@@ -26,13 +26,13 @@ class Devise::Customers::SessionsController < Devise::SessionsController
   # end
 
 
-  #ログイン後のリダイレクト先
+
   def after_sign_in_path_for(resource)
-    products_top_path
+    customer_products_top_path
   end
 
-  #ログアウト後のリダイレクト先
   def after_sign_out_path_for(resource)
-    リダイレクト先のパス
+    new_customer_registration_path
   end
+
 end
