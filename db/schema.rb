@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_30_100505) do
+ActiveRecord::Schema.define(version: 2020_10_03_071222) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "customer_id"
@@ -47,14 +47,6 @@ ActiveRecord::Schema.define(version: 2020_09_30_100505) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "customers"
-    t.string "last_name"
-    t.string "first_name"
-    t.string "last_name_kana"
-    t.string "first_name_kana"
-    t.string "address"
-    t.string "phone_number"
-    t.string "postal_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "is_deleted", default: true, null: false
@@ -86,15 +78,14 @@ ActiveRecord::Schema.define(version: 2020_09_30_100505) do
   end
 
   create_table "product_genres", force: :cascade do |t|
-    t.integer "name", default: 0
+    t.string "name"
     t.boolean "is_active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "products", force: :cascade do |t|
-    t.boolean "products", default: true
-    t.integer "genre_id"
+    t.integer "product_genre_id"
     t.integer "price"
     t.string "name"
     t.string "image_id"
