@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :customers, only:[:show]
   end
-  
+
   namespace :customer do
     resources :customers, only:[:edit, :update]
     get "/customers/:id/hide" => "customers#hide", as: 'customers_hide'
@@ -30,7 +30,14 @@ Rails.application.routes.draw do
   end
 
 
+
+  resources :addresses, except: [:show], module: 'customer'
+
+
+	get 'customer/products/top'
+
   get 'customer/products/top'
+
 
   namespace :customer do
     resources :products, only:[:show]
@@ -38,5 +45,6 @@ Rails.application.routes.draw do
   end
 
   delete '/customer/cart_products' => 'customer/cart_products#destroy_all'
+
 
 end
