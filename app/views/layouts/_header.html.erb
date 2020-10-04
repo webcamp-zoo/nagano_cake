@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 
 
     <header>
+=======
+<header class="navbar navbar-fixed-top">
+>>>>>>> d9a7dc362828cb18d57582c5b2e36102fcc5c464
       <nav>
         <ul class="nav navbar-nav navbar-right">
 
@@ -13,10 +17,17 @@
             <%#= link_to "マイページ", _path(current_customer) %><p>マイページ</p>
           </li>
           <li>
+<<<<<<< HEAD
             <%#= link_to "商品一覧", _path %><p>商品一覧</p>
           </li>
           <li>
             <%#= link_to "カート", _path, %><p>カート</p>
+=======
+            <%= link_to "商品一覧", customer_products_path %>
+          </li>
+          <li>
+            <%= link_to "カート" customer_cart_products_path %>
+>>>>>>> d9a7dc362828cb18d57582c5b2e36102fcc5c464
           </li>
           <li>
             <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
@@ -27,7 +38,11 @@
           <!--管理者ログイン時-->
           <% elsif admin_signed_in? %>
           <li>
+<<<<<<< HEAD
             <%#= link_to "商品一覧", _path %><p>商品一覧</p>
+=======
+            <%= link_to "商品一覧", admin_products_path %>
+>>>>>>> d9a7dc362828cb18d57582c5b2e36102fcc5c464
           </li>
           <li>
             <%= link_to "会員一覧", admin_customers_path %>
@@ -36,7 +51,11 @@
             <%#= link_to "注文履歴一覧", _path %><p>注文履歴一覧</p>
           </li>
           <li>
+<<<<<<< HEAD
             <%#= link_to "ジャンル一覧", _path %><p>ジャンル一覧</p>
+=======
+            <%= link_to "ジャンル一覧", admin_product_genres_path %>
+>>>>>>> d9a7dc362828cb18d57582c5b2e36102fcc5c464
           </li>
           <li>
             <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
@@ -48,7 +67,11 @@
           <% else %>
           <!-- カスタマーログイン外 -->
           <li>
+<<<<<<< HEAD
             <%#= link_to "商品一覧", _path %><p>商品一覧</p>
+=======
+            <%= link_to "商品一覧", admin_products_path %>
+>>>>>>> d9a7dc362828cb18d57582c5b2e36102fcc5c464
           </li>
           <li>
             <%= link_to "新規登録", new_customer_registration_path %>
@@ -65,7 +88,11 @@
 
         </ul>
       </nav>
+<<<<<<< HEAD
     </header>
 
 
 
+=======
+    </header>
+>>>>>>> d9a7dc362828cb18d57582c5b2e36102fcc5c464
