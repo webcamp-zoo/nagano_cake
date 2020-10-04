@@ -11,10 +11,10 @@
             <%#= link_to "マイページ", _path(current_customer) %><p>マイページ</p>
           </li>
           <li>
-            <%#= link_to "商品一覧", _path %><p>商品一覧</p>
+            <%= link_to "商品一覧", customer_products_path %>
           </li>
           <li>
-            <%#= link_to "カート", _path, %><p>カート</p>
+            <%= link_to "カート" customer_cart_products_path %>
           </li>
           <li>
             <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
@@ -46,7 +46,7 @@
           <% else %>
           <!-- カスタマーログイン外 -->
           <li>
-            <%#= link_to "商品一覧", _path %><p>商品一覧</p>
+            <%= link_to "商品一覧", admin_products_path %>
           </li>
           <li>
             <%= link_to "新規登録", new_customer_registration_path %>
