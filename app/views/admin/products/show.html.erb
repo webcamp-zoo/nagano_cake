@@ -1,0 +1,23 @@
+<h2>商品詳細</h2>
+
+	<div>
+		<%= attachment_image_tag @product, :image, :fill, 100, 100, format: 'jpeg' %>
+	</div>
+
+	<div>
+		<table>
+			<tr><th>商品名</th><td><%= @product.name %></td></tr>
+			<tr><th>商品説明</th><td><%= @product.introduction %></td></tr>
+			<tr><th>ジャンル</th><td><%= @product.product_genre.name %></td></tr>
+			<tr><th>税込価格（税抜価格）</th><td><%= ((@product.price * @tax).round(2)).ceil %>（<%= @product.price %>）円</td></tr>
+			<tr><th>販売ステータス</th><td><% if @product.is_active == true %>
+					      					販売中
+					      				  <% elsif @product.is_active == false %>
+					      					販売停止中
+					      				  <% end %></td></tr>
+		</table>
+	</div>
+
+	<div>
+		<%= link_to '編集する', edit_admin_product_path(@product) %>
+	</div>
