@@ -1,0 +1,66 @@
+<header class="navbar navbar-fixed-top">
+      <nav>
+        <ul class="nav navbar-nav navbar-right">
+
+          <!--カスタマーログイン時-->
+          <% if customer_signed_in? %>
+          <li>
+            ようこそ、<%#= last_name(current_customer) %>さん！
+          </li>
+          <li>
+            <%#= link_to "マイページ", _path(current_customer) %><p>マイページ</p>
+          </li>
+          <li>
+            <%= link_to "商品一覧", customer_products_path %>
+          </li>
+          <li>
+            <%= link_to "カート" customer_cart_products_path %>
+          </li>
+          <li>
+            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+          </li>
+          <!--カスタマーログイン時-->
+
+
+          <!--管理者ログイン時-->
+          <% elsif admin_signed_in? %>
+          <li>
+            <%= link_to "商品一覧", admin_products_path %>
+          </li>
+          <li>
+            <%= link_to "会員一覧", admin_customers_path %>
+          </li>
+          <li>
+            <%#= link_to "注文履歴一覧", _path %><p>注文履歴一覧</p>
+          </li>
+          <li>
+            <%= link_to "ジャンル一覧", admin_product_genres_path %>
+          </li>
+          <li>
+            <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
+          </li>
+          <!--管理者ログイン時-->
+
+
+
+          <% else %>
+          <!-- カスタマーログイン外 -->
+          <li>
+            <%= link_to "商品一覧", admin_products_path %>
+          </li>
+          <li>
+            <%= link_to "新規登録", new_customer_registration_path %>
+          </li>
+          <li>
+            <%= link_to "ログイン（カスタマー）", new_customer_session_path %>
+          </li>
+          <li>
+            <%= link_to "ログイン（管理者）", new_admin_session_path %>
+          </li>
+          <!-- カスタマーログイン外 -->
+
+          <% end %>
+
+        </ul>
+      </nav>
+    </header>
