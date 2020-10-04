@@ -32,4 +32,11 @@ Rails.application.routes.draw do
 
   get 'customer/products/top'
 
+  namespace :customer do
+    resources :products, only:[:show]
+    resources :cart_products, only:[:index, :create, :update, :destroy]
+  end
+
+  delete '/customer/cart_products' => 'customer/cart_products#destroy_all'
+
 end
