@@ -10,43 +10,7 @@
   </head>
 
   <body>
-    <header>
-      <h2 class="logo">LOGO</h2>
-        <% if customer_signed_in? %>
-          <%#= link_to user_path(current_user.id) do %>
-            <span>マイページ</span>
-          <%# end %>
-
-          <%#= link_to users_path do %>
-            <span>商品一覧</span>
-          <%# end %>
-
-          <%#= link_to books_path do %>
-            <span>カート</span>
-          <%# end %>
-
-          <%= link_to destroy_customer_session_path, method: :delete do %>
-              <span>ログアウト</span>
-          <% end %>
-
-        <% else %>
-          <%#= link_to root_path do %>
-            <span>About</span>
-          <%# end %>
-
-          <%#= link_to home_about_path do %>
-            <span>商品一覧</span>
-          <%# end %>
-
-          <%= link_to new_customer_registration_path do %>
-          <span>新規登録</span>
-          <% end %>
-
-          <%= link_to new_customer_session_path do %>
-          <span>ログイン</span>
-          <% end %>
-        <% end %>
-    </header>
+    <%= render "layouts/header" %>
     <%= yield %>
   </body>
 </html>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :admins,
   controllers: {
   	sessions: 'devise/admins/sessions'
@@ -12,31 +13,21 @@ Rails.application.routes.draw do
   	registrations: 'devise/customers/registrations',
   	sessions: 'devise/customers/sessions'
   }
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
-
   namespace :admin do
-    resources :customers, only:[:index]
+  	resources :product_genres, only: [:index,:create,:edit,:update]
+  	resources :products, only: [:new,:create,:index,:show,:edit,:update]
+    resources :customers, only:[:index, :show]
   end
 
-  namespace :admin do
-    resources :customers, only:[:show]
-  end
-  
   namespace :customer do
+    resources :products, only: [:index,:show]
     resources :customers, only:[:edit, :update]
     get "/customers/:id/hide" => "customers#hide", as: 'customers_hide'
     patch "/customers/:id/withdrawal" => "customers#withdrawal", as: 'customers_withdrawal'
+    resources :addresses, except: [:show]
+    get 'customer/products/top'
   end
-
-
-
-  resources :addresses, except: [:show], module: 'customer'
-
-
-	get 'customer/products/top'
-
-  get 'customer/products/top'
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 
 end

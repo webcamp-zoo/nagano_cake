@@ -1,0 +1,16 @@
+<h2>商品一覧</h2>
+	<p>(全<%= @products.count %>件)</p>
+
+		<% @products.each do |product| %>
+			<% if product.product_genre.is_active == true %>
+				<%= link_to customer_product_path(product) do %>
+					<%= attachment_image_tag(product, :image, :fill, 100, 100, fallback: "no_image.jpg") %>
+					<%= product.name %>
+				<% end %>
+				<% if product.is_active == true %>
+					<p>¥<%= ((product.price * @tax).round(2)).ceil %></p>
+				<% elsif product.is_active == false %>
+					<p>販売停止中</p>
+				<% end %>
+			<% end %>
+		<% end %>
