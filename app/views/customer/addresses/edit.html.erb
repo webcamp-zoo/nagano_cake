@@ -2,7 +2,7 @@
 
     <h2>配送先編集</h2>
 
-        <%= form_for(@address) do |f| %>
+        <%= form_for(@address, :url => {:action => :update}) do |f| %>
 
 			<div class="field row">
 				<%= f.label :郵便番号 %><span>(ハイフンなし)</span><br />
