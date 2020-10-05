@@ -3,7 +3,7 @@
 
     <h2>配送先登録/一覧</h2>
 
-        <%= form_for(@address) do |f| %>
+        <%= form_for(@address, :url => {:action => :create}) do |f| %>
 
 			<div class="field row">
 				<%= f.label :郵便番号 %><span>(ハイフンなし)</span><br />
@@ -46,8 +46,8 @@
 				    <td><%= address.address %></td>
 				    <td><%= address.name %></td>
 				    <td>
-                        <%= link_to '編集する', edit_address_path(address), class: 'btn-sm btn-primary' %>
-				    	<%= link_to '削除する', address_path(address), class: 'btn-sm btn-danger', method: :delete %>
+                        <%= link_to '編集する', edit_customer_address_path(address), class: 'btn-sm btn-primary' %>
+				    	<%= link_to '削除する', customer_address_path(address), class: 'btn-sm btn-danger', method: :delete %>
 				    </td>
 				    <% end %>
 				</tr>

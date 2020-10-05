@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     get "/customers/:id/hide" => "customers#hide", as: 'customers_hide'
     patch "/customers/:id/withdrawal" => "customers#withdrawal", as: 'customers_withdrawal'
     resources :addresses, except: [:show]
-    get 'customer/products/top'
+    get 'products/top'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
