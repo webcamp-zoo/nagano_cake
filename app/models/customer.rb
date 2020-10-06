@@ -4,12 +4,15 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
         :recoverable, :rememberable, :validatable
 
-
   has_many :cart_products, dependent: :destroy
-
-
   has_many :addresses
   enum is_deleted: {Available: true, Invalid: false}
 
+  #def self.full_name(customer)
+     # customer.first_name + customer.last_name
+  #end
 
-end
+  def full_name
+    "#{last_name} #{first_name}"
+  end
+

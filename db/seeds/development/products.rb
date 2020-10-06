@@ -1,7 +1,7 @@
 
 10.times do |idx|
     Product.create(
-        genre_id: 0,
+        product_genre_id: 0,
         price: 1000,
         name: "ショートケーキ#{idx}",
         image_id: "shortcake.jpg",

@@ -26,6 +26,7 @@ class Devise::Customers::SessionsController < Devise::SessionsController
   # end
 
 
+
   def after_sign_in_path_for(resource)
     customer_products_top_path
   end

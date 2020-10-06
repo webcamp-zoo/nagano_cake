@@ -31,7 +31,7 @@ class Customer::AddressesController < ApplicationController
 	def update
 		@address = Address.find(params[:id])
 		if @address.update(address_params)
-        redirect_to addresses_path(@address), notice: "You have updated book successfully."
+        redirect_to customer_addresses_path(@address), notice: "You have updated book successfully."
         else
         redirect_to request.referer
         end
