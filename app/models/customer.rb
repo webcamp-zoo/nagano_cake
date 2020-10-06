@@ -9,4 +9,11 @@ class Customer < ApplicationRecord
   has_many :addresses
   enum is_deleted: {Available: true, Invalid: false}
 
+  #def self.full_name(customer)
+     # customer.first_name + customer.last_name
+  #end
+
+  def full_name
+    "#{last_name} #{first_name}"
+  end
 end

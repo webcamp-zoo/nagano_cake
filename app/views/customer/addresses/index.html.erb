@@ -3,6 +3,8 @@
 
     <h2>配送先登録/一覧</h2>
 
+
+	<%= form_for(@address, :url => {:action => :create}) do |f| %>
         <%= form_for(@address, :url => {:action => :create}) do |f| %>
 
 			<div class="field row">
