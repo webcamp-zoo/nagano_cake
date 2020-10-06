@@ -32,7 +32,6 @@ Rails.application.routes.draw do
     resources :cart_products, only:[:index, :create, :update, :destroy]
     resources :addresses, except: [:show]
     resources :orders, only: [:new, :create]
-
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
