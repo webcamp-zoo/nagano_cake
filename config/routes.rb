@@ -26,9 +26,10 @@ Rails.application.routes.draw do
     get 'orders/log'=>"orders#log"
     get 'orders/thanx'=>"orders#thanx"
     get 'products/top'
-    
+    get 'products/about'
+
     resources :products, only: [:index,:show]
-    resources :customers, only:[:edit, :update]
+    resources :customers, only:[:show, :edit, :update]
     resources :cart_products, only:[:index, :create, :update, :destroy]
     resources :addresses, except: [:show]
     resources :orders, only: [:new, :create, :show, :index]
