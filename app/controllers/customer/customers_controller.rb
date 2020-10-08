@@ -2,6 +2,10 @@ class Customer::CustomersController < ApplicationController
 
     before_action :correct_customer, only: [:edit, :update, :hide, :withdrawal]
 
+    def show
+        @user = current_customer
+    end
+
     def edit
         @customer = Customer.find(params[:id])
     end
