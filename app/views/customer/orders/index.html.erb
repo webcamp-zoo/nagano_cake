@@ -1,0 +1,40 @@
+
+
+<div class="container">
+
+<table class="table table-bordered">
+<h2>注文履歴一覧</h2>
+	<thead>
+		<tr>
+			<th>注文日</th>
+			<th>配送先</th>
+			<th>注文商品</th>
+			<th>支払い金額</th>
+			<th>ステータス</th>
+			<th>注文詳細</th>
+		</tr>
+	</thead>
+    <tbody>
+    <% @orders.each do |order| %>
+        <tr>
+			<td><%= order.created_at.strftime("%Y/%m/%d") %></td><!-- atrftimeメソッド＝＝時間表示 -->
+			<td>
+                <%= order.postal_code %><br>
+                <%= order.address %><br>
+                <%= order.name %><br>
+            </td>
+	        <td>
+	        	 <% order.order_products.each do |order_product| %>
+		         <%= order_product.product.name %>×<%= order_product.quantity %>
+		         <% end %>
+		    </td>
+	        <td><%= ((order.total_price + 800 * 1.1).round(2)).ceil %></td>
+	        <td><%= order.status %></td>
+			<td>
+				<%= link_to "表示する", customer_order_path(order), class: "btn btn-primary" %>
+			</td>
+		</tr>
+	<% end %>
+	</tbody>
+</table>
+</div>

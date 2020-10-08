@@ -3,9 +3,7 @@
 
     <h2>配送先登録/一覧</h2>
 
-
-	<%= form_for(@address, :url => {:action => :create}) do |f| %>
-        <%= form_for(@address, :url => {:action => :create}) do |f| %>
+        <%= form_with :model => @address, url:customer_addresses_path, method: :post, local: true  do |f| %>
 
 			<div class="field row">
 				<%= f.label :郵便番号 %><span>(ハイフンなし)</span><br />
@@ -42,8 +40,8 @@
 				</tr>
 			</thead>
             <tbody>
-            	<% @addresses.each do |address| %>
                 <tr>
+                	<% @addresses.each do |address| %>
 			        <td><%= address.postal_code %></td>
 				    <td><%= address.address %></td>
 				    <td><%= address.name %></td>
