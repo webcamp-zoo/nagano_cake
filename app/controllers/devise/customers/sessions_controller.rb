@@ -28,11 +28,11 @@ class Devise::Customers::SessionsController < Devise::SessionsController
 
 
   def after_sign_in_path_for(resource)
-    customer_products_top_path
+    customer_products_path
   end
 
   def after_sign_out_path_for(resource)
-    new_customer_registration_path
+    customer_products_path
   end
 
 end

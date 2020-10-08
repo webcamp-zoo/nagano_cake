@@ -9,6 +9,10 @@ class Customer::CustomersController < ApplicationController
         @customer = Customer.find(current_customer.id)
     end
 
+    def show
+        @user = current_customer
+    end
+
     def edit
         @customer = Customer.find(current_customer.id)
     end

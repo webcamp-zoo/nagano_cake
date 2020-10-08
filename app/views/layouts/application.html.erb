@@ -1,19 +1,64 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
     <title>NaganoCake</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&family=Montserrat:wght@600&display=swap" rel="stylesheet">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
+    <header>
+        <div class="header-container clearfix">
+          <div class= "headline">nagano cake</div>
+          <nav>
+            <ul class="nav-list">
 
-    <%= render "layouts/header" %>
+              <!--カスタマーログイン時-->
+              <% if customer_signed_in? %>
+                <li class="nav-list-item">ようこそ、<%= current_customer.last_name %>さん！</li>
+                <li class="nav-list-item"><%= link_to "マイページ", customer_customer_path(current_customer),class: "link" %></li>
+                <li class="nav-list-item"><%= link_to "商品一覧", customer_products_path,class: "link" %></li>
+                <li class="nav-list-item"><%= link_to "カート", customer_cart_products_path,class: "link" %></li>
+                <li class="nav-list-item"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete,class: "link" %></li>
+              <!--カスタマーログイン時-->
 
-    <%= yield %>
+              <!--管理者ログイン時-->
+              <% elsif admin_signed_in? %>
+                <li class="nav-list-item"><%= link_to "商品一覧", admin_products_path,class: "link" %></li>
+                <li class="nav-list-item"><%= link_to "会員一覧", admin_customers_path,class: "link" %></li>
+                <li class="nav-list-item"><%#= link_to "注文履歴一覧", _path,class: "link" %><p>注文履歴一覧</p></li>
+                <li class="nav-list-item"><%= link_to "ジャンル一覧", admin_product_genres_path,class: "link" %></li>
+                <li class="nav-list-item"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete,class: "link" %></li>
+              <!--管理者ログイン時-->
 
+              <!-- カスタマーログイン外 -->
+              <% else %>
+                <li class="nav-list-item"><%= link_to "About", customer_products_about_path,class: "link" %></li>
+                <li class="nav-list-item"><%= link_to "商品一覧", customer_products_path,class: "link" %></li>
+                <li class="nav-list-item"><%= link_to "新規登録", new_customer_registration_path,class: "link" %></li>
+                <li class="nav-list-item"><%= link_to "ログイン（カスタマー）", new_customer_session_path,class: "link" %></li>
+              <!-- カスタマーログイン外 -->
+              <% end %>
+
+            </ul>
+          </nav>
+          </div>
+        </div>
+    </header>
+
+    <div class="main clearfix <%= controller.controller_name %>">
+      <%= yield %>
+    </div>
+
+    <footer>
+      <div class="footer-container">
+        <p class="copy">Copyright © Zoo Inc. All Rights Reserved.</p>
+        <li class="footer-item"><%= link_to "管理者用ログイン", new_admin_session_path,class: "link" %></li>
+      </div>
+    </footer>
   </body>
 </html>
