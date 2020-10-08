@@ -1,4 +1,6 @@
 <h2>商品一覧</h2>
+<%= link_to "注文履歴一覧", customer_orders_path %>
+
 	<p>(全<%= @products.count %>件)</p>
 
 		<% @products.each do |product| %>
