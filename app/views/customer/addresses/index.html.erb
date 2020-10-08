@@ -1,5 +1,9 @@
 <div class="container">
     <h2>配送先登録/一覧</h2>
+
+			<div class="actions row"><br />
+				<div class="col-xs-12">
+
 	<%= form_with :model => @address, url:customer_addresses_path, method: :post, local: true  do |f| %>
 		<div class="field row">
 			<%= f.label :郵便番号 %><span>(ハイフンなし)</span><br />
@@ -17,12 +21,13 @@
 		</div>
 		<div class="actions row"><br />
 			<div class="col-xs-12">
+
 				<%= f.submit :登録する, class: "btn btn-success" %>
 			</div>
 		</div>
     <% end %>
 </div>
-
+        
 <div class="container">
     <table class="table table-bordered">
 		<thead>
@@ -36,6 +41,7 @@
         <tbody>
         	<% @addresses.each do |address| %>
 		    	<tr>
+
 			        <td><%= address.postal_code %></td>
 				    <td><%= address.address %></td>
 				    <td><%= address.name %></td>
