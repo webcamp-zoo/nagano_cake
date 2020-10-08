@@ -7,7 +7,7 @@ class Customer < ApplicationRecord
   has_many :cart_products, dependent: :destroy
 
   has_many :addresses
-  enum is_deleted: {Available: true, Invalid: false}
+  # enum is_deleted: {Available: true, Invalid: false}
 
   #def self.full_name(customer)
      # customer.first_name + customer.last_name
