@@ -1,52 +1,37 @@
-<table class="table table-striped">
-    <tbody>
-        <tr>
-            <td>顧客ID</td>
-            <td><%= @customer.id %></td>
-            
-            <td>
-                <% if @customer.is_deleted ==true %>
-                    <td>有効会員</td>
-                <% else %>
-                    <td>無効会員</td>
-                <% end %>
-            </td>
-        </tr>
+<h1>会員情報</h1>
 
-        <tr>
-            <td>氏名</td>
-            <td><%= @customer.last_name%><%= @customer.first_name %></td>
-        </tr>
-
-        <tr>
-            <td>フリガナ</td>
-            <td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
-        </tr>
-
-        <tr>
-            <td>郵便番号</td>
-            <td><%= @customer.postal_code %></td>
-        </tr>
-
-        <tr>
-            <td>住所</td>
-            <td><%= @customer.address %></td>
-        </tr>
-
-        <tr>
-            <td>電話番号</td>
-            <td><%= @customer.phone_number %></td>
-        </tr>
-
-        <tr>
-            <td>メールアドレス</td>
-            <td><%= @customer.email %></td>
-        </tr>
-
-        <tr>
-            <td>編集する</td>
-            <td>注文する</td>
-        </tr>
-
-    </tbody>
+<div class="container">
+<table class="table table-bordered">
+    <thead>
+    <tr>
+            <th>顧客ID</th>
+            <th>氏名</th>
+            <th>フリガナ</th>
+            <th>郵便番号</th>
+            <th>住所</th>
+            <th>電話番号</th>
+            <th>メールアドレス</th>
+            <th></th>
+    </tr>
+    </thead>
+    <tr>
+        <td><%= @customer.id %>
+            <% if @customer.is_deleted ==true %>
+            <p class= 'btn-sm btn-primary'>有効<p>
+            <% else %>
+            <p class= 'btn-sm btn-success'>無効<p>
+        <% end %>
+        </td>
+        <td><%#= link_to admin_customer_path(@customer) do %>                    <!-- リンク追加しました。グッチー -->
+            <%= @customer.last_name%><%= @customer.first_name %>
+            <%# end %>
+        </td>
+        <td><%= @customer.last_name_kana%><%= @customer.first_name_kana %></td>
+        <td><%= @customer.postal_code %></td>
+        <td><%= @customer.address %></td>
+        <td><%= @customer.phone_number %></td>
+        <td><%= @customer.email %></td>
+        <td><%= link_to '編集する', edit_admin_customer_path(@customer), class: 'btn-sm btn-primary' %></td>
+    </tr>
 </table>
+</div>
