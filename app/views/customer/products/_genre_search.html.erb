@@ -1,17 +1,31 @@
-<table>
+
+<div class="side-bar col-xs-2">
+	<p>カテゴリーから選ぶ</p>
+
+	<% genres.each do |g| %>
+		<%= link_to customer_products_path(:product_genre_id => g.id) do %>
+			<div class="bar1"><%= g.name %></div>
+		<% end %>
+	<% end %>
+	<%#= render 'users/profile', user: @user %>
+</div>
+
+
+<!-- <table>
 	<thead>
 		<tr>
 			<th>ジャンル検索</th>
 		</tr>
 	</thead>
 	<tbody>
-		<% genres.each do |g| %>
+		<%# genres.each do |g| %>
 			<tr>
-			　　<td><%= link_to customer_products_path(:product_genre_id => g.id) do %>
-						<%= g.name %>
-				    <% end %>
+			　　<td><%#= link_to customer_products_path(:product_genre_id => g.id) do %>
+						<%#= g.name %>
+				    <%# end %>
 				</td>
 			</tr>
-		<% end %>
+		<%# end %>
 	</tbody>
 </table>
+ -->

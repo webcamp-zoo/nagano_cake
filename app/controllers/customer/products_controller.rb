@@ -5,6 +5,9 @@ class Customer::ProductsController < ApplicationController
 	def top
 	end
 
+	def about
+	end
+
 	def show
 		@product = Product.find(params[:id])
 		@cart_product = CartProduct.new
@@ -17,13 +20,15 @@ class Customer::ProductsController < ApplicationController
 	      genre = ProductGenre.find(params[:product_genre_id])
 	      @title = genre.name
 	      # category_idと紐づく投稿を取得
-	      @products = genre.products.all
-	      @count = @products.count
+	      @products = genre.products.all.page(params[:page]).per(8)
+	      @count = genre.products.all.count
+	      # @count = @products.count
 	    else
 	      # 投稿すべてを取得
 	      @title = "商品一覧"
-	      @products = Product.all
-	      @count = @products.count
+	      @products = Product.all.page(params[:page]).per(8)
+	      @count = Product.all.count
+	      # @count = @products.count
 	    end
 	end
 

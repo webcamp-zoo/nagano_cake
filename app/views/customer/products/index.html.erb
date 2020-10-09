@@ -1,18 +1,30 @@
-<h2><%= @title %></h2>
-	<p>(全<%= @count %>件)</p>
+<div class="container">
+	<div class="row">
 
 		<%= render "genre_search", genres: @genres %>
 
-		<% @products.each do |product| %>
-			<% if product.product_genre.is_active == true %>
-				<%= link_to customer_product_path(product) do %>
-					<%= attachment_image_tag(product, :image, :fill, 100, 100, fallback: "no_image.jpg") %>
-					<%= product.name %>
-				<% end %>
-				<% if product.is_active == true %>
-					<p>¥<%= ((product.price * @tax).round(2)).ceil %></p>
-				<% elsif product.is_active == false %>
-					<p>販売停止中</p>
-				<% end %>
+		<div class="product-items col-xs-10">
+			<h2 class="pagetitle"><%= @title %><span>(全<%= @count %>件)</span></h2>
+				<% @products.each do |product| %>
+				<div class="product-item clearfix">
+					<% if product.product_genre.is_active == true %>
+						<%= link_to customer_product_path(product) do %>
+							<div class="product-item-img">
+								<%= attachment_image_tag(product, :image, :fill, 205, 150, fallback: "no_image.jpg") %>
+							</div>
+							<div class="product-item-name">
+								<%= product.name %>
+							</div>
+						<% end %>
+						<% if product.is_active == true %>
+							<p class="product-item-price">¥<%= ((product.price * @tax).round(2)).ceil.to_s(:delimited) %></p>
+						<% elsif product.is_active == false %>
+							<p>販売停止中</p>
+						<% end %>
+					<% end %>
+				</div>
 			<% end %>
-		<% end %>
+		</div>
+		<%= paginate @products %>
+	</div>
+</div>

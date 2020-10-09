@@ -4,12 +4,13 @@ class Customer::AddressesController < ApplicationController
 
 	def index
 		@address = Address.new
-		@addresses = Address.all
+		@addresses = current_customer.addresses
 	end
 
 	def create
 		@address = Address.new(address_params)
 		@address.customer_id = current_customer.id
+		@addresses = current_customer.address
         if @address.save
           redirect_to request.referer, notice: "You have created address successfully."
         else
