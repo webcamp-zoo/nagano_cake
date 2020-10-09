@@ -10,7 +10,7 @@ class Admin::ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      redirect_to admin_products_path, notice: "You have created new genre successfully."
+      redirect_to admin_product_path(@product), notice: "You have created new genre successfully."
     else
       redirect_to request.referer
     end
@@ -33,7 +33,7 @@ class Admin::ProductsController < ApplicationController
   def update
   	@product = Product.find(params[:id])
   	if @product.update(product_params)
-      redirect_to admin_products_path, notice: "You have updated product successfully."
+      redirect_to admin_product_path(@product), notice: "You have updated product successfully."
     else
       render "edit"
     end
