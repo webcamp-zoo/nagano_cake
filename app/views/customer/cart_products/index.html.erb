@@ -1,23 +1,24 @@
 <div class="container">
 
-	<h3>ショッピングカート</h3>
-
-	<%= link_to "カートを空にする", customer_cart_products_path, method: :delete, class: "btn btn-danger" %>
+	<h2 class="pagetitle">
+		ショッピングカート	<span><%= link_to "カートを空にする", customer_cart_products_path, method: :delete, class: "btn btn-danger btn-md pull-right" %></span>
+	</h2>
 	<table class="table">
 		<thead>
 			<tr>
-				<th>商品名</th>
-				<th>単価(税込)</th>
-				<th>数量</th>
-				<th>小計</th>
-				<th></th>
+				<th class="table-head">商品名</th>
+				<th class="table-head">単価(税込)</th>
+				<th class="table-head">数量</th>
+				<th class="table-head">小計</th>
+				<th class="table-head"></th>
 			</tr>
 		</thead>
 		<tbody>
 			<% sum = 0 %>
 			<% @cart_products.each do |cart_product| %>
 				<tr>
-					<td><%= cart_product.product.name %></td>
+					<td><%= attachment_image_tag(cart_product.product, :image, :fill, 100, 60, fallback: "no_image.jpg") %>
+						<span class="table-product-name"><%= cart_product.product.name %></span></td>
 					<td><%= ((cart_product.product.price * 1.1).round(2)).ceil.to_s(:delimited) %></td>
 					<td><%= form_for(cart_product, url: customer_cart_product_path(cart_product.id)) do |f| %>
 						<%= f.text_field :quantity %>
@@ -35,14 +36,14 @@
 	</table>
 		<div class="row">
 			<%= link_to "買い物を続ける",customer_products_path, class: "btn btn-warning col-xs-2" %>
-			<table>
-				<tr>
+			<table class="table col-xs-10">
+				<tr class="col-xs-offset-10 col-xs-2">
 					<th>合計金額</th><td><%= sum %></td>
 				</tr>
 			</table>
 		</div>
 
 	<div class="row">
-		<%= link_to "情報入力へ進む",new_customer_order_path, class: "btn btn-warning col-xs-offset-5 col-xs-2" %>
+		<%= link_to "情報入力へ進む",new_customer_order_path, class: "btn btn-warning col-xs-offset-5 col-xs-2 cart-items-decision" %>
 	</div>
 </div>
