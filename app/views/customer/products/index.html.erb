@@ -1,17 +1,10 @@
 <div class="container">
-
 	<div class="row">
-		<div class="side-bar col-xs-2">
-			<p>カテゴリーから選ぶ</p>
 
-			<div class="bar1">ケーキ</div>
-			<div class="bar1">焼き菓子</div>
-			<div class="bar1">プリン</div>
-			<div class="bar1">キャンディ</div>
-			<%#= render 'users/profile', user: @user %>
-		</div>
+		<%= render "genre_search", genres: @genres %>
+
 		<div class="product-items col-xs-10">
-			<h2 class="pagetitle">商品一覧<span>(全<%= @products.count %>件)</span></h2>
+			<h2 class="pagetitle"><%= @title %><span>(全<%= @count %>件)</span></h2>
 				<% @products.each do |product| %>
 				<div class="product-item clearfix">
 					<% if product.product_genre.is_active == true %>
