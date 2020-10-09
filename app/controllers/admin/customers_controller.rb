@@ -20,7 +20,7 @@ class Admin::CustomersController < ApplicationController
         if @customer.update(customer_params)
         redirect_to admin_customer_path(@customer), notice: "You have updated book successfully."
         else
-        redirect_to request.referer
+        redirect_to customer_customer_path
         end
     end
 

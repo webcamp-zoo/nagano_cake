@@ -1,12 +1,5 @@
 class Customer::CustomersController < ApplicationController
 
-    before_action :authenticate_customer!, except: [:top]
-
-    def top
-        @products = Product.all
-        @all_ranks = @products.find(OrderProduct.group(:product_id).order('count(product_id) desc').limit(4).pluck(:product_id))
-    end
-
     def show
         @customer = Customer.find(current_customer.id)
     end
