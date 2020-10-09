@@ -1,15 +1,9 @@
+<!-- <h2>商品詳細ページ</h2> -->
 <div class="container">
-
 	<div class="row">
-		<div class="side-bar col-xs-2">
-			<p>カテゴリーから選ぶ</p>
 
-			<div class="bar1">ケーキ</div>
-			<div class="bar1">焼き菓子</div>
-			<div class="bar1">プリン</div>
-			<div class="bar1">キャンディ</div>
-			<%#= render 'users/profile', user: @user %>
-		</div>
+		<%= render "genre_search", genres: @genres %>
+
 		<div class="product-show col-xs-offset-1 col-xs-9">
 			<div class="product-show-img">
 				<%= attachment_image_tag(@product, :image, :fill, 400, 250, fallback: "no_image.jpg") %>

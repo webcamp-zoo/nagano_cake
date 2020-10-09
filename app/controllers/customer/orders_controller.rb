@@ -19,6 +19,9 @@ class Customer::OrdersController < ApplicationController
 
     def log
         @order = Order.new
+        @order_product = OrderProduct.new
+        @cart_products = current_customer.cart_products
+
         if "address1"== params[:addresses]
             @order.postal_code = current_customer.postal_code
             @order.address = current_customer.address
@@ -38,38 +41,44 @@ class Customer::OrdersController < ApplicationController
         else
             @order.payment_method = 1
         end
-
-        @cart_products = current_customer.cart_products
-
     end
 
     def create
         @cart_products = current_customer.cart_products
         order = Order.new(order_params)
         order.save
+        @cart_products = current_customer.cart_products
         @cart_products.each do |cart_product|
             @order_product = OrderProduct.new(
                 product_id: cart_product.product.id,
                 order_id: order.id,
                 quantity: cart_product.quantity,
-                making_status: 0,
-                taxed_price: 1)
+                taxed_price: ((cart_product.product.price * 1.1).round(2)).ceil)
             @order_product.save
             cart_product.destroy
         end
-        redirect_to customer_orders_thanx_path
 
         if "address3"== params[:addresses]
             current_customer.address.create(address_params)
         end
+
+        redirect_to customer_orders_thanx_path
+
     end
 
     def thanx
     end
 
+
     private
-    def order_params
-        params.permit(:customer_id, :payment_method, :total_price, :name, :address, :postal_code)
+
+	def order_params
+		params.permit(:customer_id, :payment_method, :total_price, :name, :address, :postal_code)
     end
 
+    # def order_product_params
+    #     params.permit(order_product:[:product_id, :order_id, :quantity, :taxed_price])
+    # end
+
 end
+
