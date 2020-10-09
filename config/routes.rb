@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   	resources :product_genres, only: [:index,:create,:edit,:update]
   	resources :products, only: [:new,:create,:index,:show,:edit,:update]
     resources :customers, only:[:index, :show]
+    resources :orders, only:[:index, :show, :update]
+    resources :order_products, only:[:update]
   end
 
   namespace :customer do

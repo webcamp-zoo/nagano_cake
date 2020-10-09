@@ -1,5 +1,7 @@
-<h2>商品一覧</h2>
-	<p>(全<%= @products.count %>件)</p>
+<h2><%= @title %></h2>
+	<p>(全<%= @count %>件)</p>
+
+		<%= render "genre_search", genres: @genres %>
 
 		<% @products.each do |product| %>
 			<% if product.product_genre.is_active == true %>
