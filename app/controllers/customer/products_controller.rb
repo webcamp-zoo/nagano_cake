@@ -12,7 +12,7 @@ class Customer::ProductsController < ApplicationController
 	end
 
 	def index
-    	@products = Product.all
+    	@products = Product.all.page(params[:page]).per(8)
     	@tax = 1.1
     	@genres = ProductGenre.all
 	end
