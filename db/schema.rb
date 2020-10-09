@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_30_100505) do
+ActiveRecord::Schema.define(version: 2020_10_07_043559) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "customer_id"
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2020_09_30_100505) do
     t.integer "product_id"
     t.integer "order_id"
     t.integer "quantity"
-    t.integer "making_status"
+    t.integer "making_status", default: 0
     t.integer "taxed_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -74,27 +74,26 @@ ActiveRecord::Schema.define(version: 2020_09_30_100505) do
 
   create_table "orders", force: :cascade do |t|
     t.integer "customer_id"
-    t.integer "shipping_cost"
+    t.integer "shipping_cost", default: 800
     t.integer "total_price"
     t.integer "payment_method"
     t.string "name"
     t.string "postal_code"
     t.string "address"
-    t.integer "status"
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "product_genres", force: :cascade do |t|
-    t.integer "name", default: 0
+    t.string "name"
     t.boolean "is_active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "products", force: :cascade do |t|
-    t.boolean "products", default: true
-    t.integer "genre_id"
+    t.integer "product_genre_id"
     t.integer "price"
     t.string "name"
     t.string "image_id"
