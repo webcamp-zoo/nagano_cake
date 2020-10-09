@@ -2,7 +2,90 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-.test {
-	color: red;
+.pagetitle {
+	font-family: 'M PLUS 1p', sans-serif;
+	color: #583822;
+	border-bottom: 1px solid #583822;
+	padding-bottom: 15px;
+	margin: 50px 0;
 }
+
+.pagetitle span {
+	font-size: 15px;
+}
+
+
+.product-items  {
+	margin: 0;
+	padding: 0;
+}
+
+.product-item {
+	float: left;
+	margin-right: 25px;
+	margin-bottom: 50px;
+}
+
+.product-item:nth-of-type(4n) {
+	margin-right: 0;
+}
+
+.product-item-name {
+	list-style: none;
+	padding: 20px 0;
+	color: #583822;
+	font-family: 'M PLUS 1p', sans-serif;
+	font-weight: bold;
+	font-size: 15px;
+}
+
+.product-item-price {
+	color: #583822;
+	font-family: 'M PLUS 1p', sans-serif;
+	font-weight: bold;
+	font-size: 15px;
+}
+
+.side-bar {
+	margin: 50px 0;
+	height: 700px;
+}
+
+.bar1 {
+	height: 60px;
+	width: 160px;
+	margin: 2px;
+	color: #583822;
+	background-color: #f8e58c;
+	font-family: 'M PLUS 1p', sans-serif;
+	text-align: center;
+	line-height: 60px;
+}
+
+//-------------------------------------------------------↑index--//
+//--------------------------------------------------------↓show--//
+
+.product-show {
+	margin-top: 50px;
+}
+
+.product-show-img {
+	float: left;
+}
+
+.product-show-text{
+	margin-left: 20px;
+}
+
+.product-show-name {
+
+}
+
+
+//-------------------------------------------------------↑show--//
+//--------------------------------------------------------↓top--//
+
+.nagano {
+	margin: 50px 0;
+}
+

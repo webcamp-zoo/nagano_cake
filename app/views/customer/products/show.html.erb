@@ -1,18 +1,37 @@
+<div class="container">
 
-<%#= attachment_image_tag(@product, :image, :fill, 100, 100, fallback: "no_image.jpg") %>
-<div class="product_name">
-	<h2><%= @product.name %></h2>
+	<div class="row">
+		<div class="side-bar col-xs-2">
+			<p>カテゴリーから選ぶ</p>
+
+			<div class="bar1">ケーキ</div>
+			<div class="bar1">焼き菓子</div>
+			<div class="bar1">プリン</div>
+			<div class="bar1">キャンディ</div>
+			<%#= render 'users/profile', user: @user %>
+		</div>
+		<div class="product-show col-xs-offset-1 col-xs-9">
+			<div class="product-show-img">
+				<%= attachment_image_tag(@product, :image, :fill, 400, 250, fallback: "no_image.jpg") %>
+			</div>
+			<div class="product-show-text">
+				<div class="product-show-name">
+					<h2><%= @product.name %></h2>
+				</div>
+				<div class="product-show-introduction">
+					<%= @product.introduction %>
+				</div>
+				<div class="product-show-price">
+					<p>¥<%= @product.price %>(税込)</p>
+				</div>
+				<%= form_for(@cart_product, url: customer_cart_products_path) do |f| %>
+					<%= f.select :quantity, [["1個","1"],["2個","2"],["3個","3"],["4個","4"],["5個","5"],
+											["6個","6"],["7個","7"],["8個","8"],["9個","9"],["10個","10"]],
+											 include_blank: "選択してください" %>
+					<%= f.hidden_field :product_id, value: @product.id %>
+					<%= f.submit "カートに入れる" %>
+			</div>
+			<% end %>
+		</div>
+	</div>
 </div>
-<div class="product_introduction">
-	<%= @product.introduction %>
-</div>
-<div class="product_price">
-	<p>¥<%= @product.price %>(税込)</p>
-</div>
-<%= form_for(@cart_product, url: customer_cart_products_path) do |f| %>
-	<%= f.select :quantity, [["1個","1"],["2個","2"],["3個","3"],["4個","4"],["5個","5"],
-							["6個","6"],["7個","7"],["8個","8"],["9個","9"],["10個","10"]],
-							 include_blank: "選択してください" %>
-	<%= f.hidden_field :product_id, value: @product.id %>
-	<%= f.submit "カートに入れる" %>
-<% end %>
