@@ -4,3 +4,8 @@
 このサイトは、ケーキ販売のECサイトになります。
 会員でない方も商品の閲覧はできますが、
 購入には会員登録が必要になります。
+
+<% @all_ranks.each do |f| %>
+    <%= attachment_image_tag(@product, :image, :fill, 100, 100, fallback: "no_image.jpg") %>
+    <%= f.name %>
+<% end %>

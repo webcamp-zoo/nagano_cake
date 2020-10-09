@@ -3,6 +3,8 @@ class Customer::CustomersController < ApplicationController
     before_action :authenticate_customer!, except: [:top]
 
     def top
+        @products = Product.all
+        @all_ranks = @products.find(OrderProduct.group(:product_id).order('count(product_id) desc').limit(4).pluck(:product_id))
     end
 
     def show
@@ -21,7 +23,7 @@ class Customer::CustomersController < ApplicationController
         @customer = Customer.find(current_customer.id)#ユーザーの情報を特定する
     if @customer.update(customer_params)#更新する
            redirect_to customer_customers_path(@customer.id)#,notice: 'You have updated user successfully.'
-        else 
+        else
             render :edit
         end
     end

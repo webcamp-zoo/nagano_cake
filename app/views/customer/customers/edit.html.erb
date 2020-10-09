@@ -81,11 +81,13 @@
                             </div>
 
                             <div class="col-md-3">
-                                <%= form_for(@customer, url:customer_customers_withdrawal_path) do |f| %>
-                                    <%= f.submit "退会する", class:"btn btn-danger" %>
+                            <% if customer_signed_in? && @customer.id == current_customer.id %>
+                                <%= link_to "退会", customer_customers_withdrawal_path(current_customer), method: :patch, "data-confirm" => "本当に退会しますか？", class:"btn btn-danger" %>
                                 <% end %>
+                                #<%= form_for(@customer, url:customer_customers_withdrawal_path) do |f| %>
+                                    #<%= f.submit "退会する", class:"btn btn-danger" %>
+                                #<% end %>
                             </div>
                         </div>
                         
-                   
 </div>
