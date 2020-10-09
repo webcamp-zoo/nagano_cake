@@ -17,7 +17,9 @@
 
             <h3>登録済住所から選択</h3>
             <%= f.radio_button :addresses, "address2" %>
-                <%= f.collection_select(:address_id, @addresses, :id, :order_address) %>
+            <%= f.collection_select(:address_id, @addresses, :id, :order_address) %>
+
+
 
             <h3>新しいお届け先</h3>
             <%= f.radio_button :addresses, "address3" %>

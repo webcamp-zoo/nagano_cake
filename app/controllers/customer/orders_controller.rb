@@ -14,6 +14,7 @@ class Customer::OrdersController < ApplicationController
 
     def new
         @order = Order.new
+        @address = Address.new
         @addresses = Address.where(customer_id: current_customer.id)
     end
 
@@ -31,6 +32,7 @@ class Customer::OrdersController < ApplicationController
             @order.postal_code = params[:postal_code]
             @order.address = params[:address]
             @order.name = params[:name]
+            @addresses = params[:addresses]
         end
 
         if "クレジットカード" == params[:payment_method]
@@ -47,6 +49,11 @@ class Customer::OrdersController < ApplicationController
         @cart_products = current_customer.cart_products
         order = Order.new(order_params)
         order.save
+        if "address3"== params[:addresses]
+            address = Address.new(address_params)
+            address.customer_id = current_customer.id
+            address.save
+        end
         @cart_products.each do |cart_product|
             @order_product = OrderProduct.new(
                 product_id: cart_product.product.id,
@@ -59,9 +66,6 @@ class Customer::OrdersController < ApplicationController
         end
         redirect_to customer_orders_thanx_path
 
-        if "address3"== params[:addresses]
-            current_customer.address.create(address_params)
-        end
     end
 
     def thanx
@@ -70,6 +74,10 @@ class Customer::OrdersController < ApplicationController
     private
     def order_params
         params.permit(:customer_id, :payment_method, :total_price, :name, :address, :postal_code)
+    end
+
+    def address_params
+        params.require(:address).permit(:name, :postal_code, :address)
     end
 
 end
