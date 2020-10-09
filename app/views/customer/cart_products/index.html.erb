@@ -26,11 +26,11 @@
 						<%= f.submit "変更", class: "btn btn-default" %>
 						<% end %>
 					</td>
-					<td><%= ((cart_product.product.price * cart_product.quantity * 1.1).round(2)).ceil.to_s(:delimited) %></td>
+					<td><%= ((cart_product.product.price * cart_product.quantity.to_i * 1.1).round(2)).ceil.to_s(:delimited) %></td>				
 					<td><%= link_to "削除する", customer_cart_product_path(cart_product.id), method: :delete, class: "btn btn-danger" %>
 					</td>
 				</tr>
-				<% sum += cart_product.product.price * cart_product.quantity %>
+				<% sum += cart_product.product.price * cart_product.quantity.to_i %>
 			<% end %>
 		</tbody>
 	</table>

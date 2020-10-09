@@ -1,47 +1,46 @@
 class Customer::CustomersController < ApplicationController
 
-    before_action :correct_customer, only: [:edit, :update, :hide, :withdrawal]
+    before_action :authenticate_customer!, except: [:top]
+
+    def top
+        @products = Product.all
+        @all_ranks = @products.find(OrderProduct.group(:product_id).order('count(product_id) desc').limit(4).pluck(:product_id))
+    end
+
+    def show
+        @customer = Customer.find(current_customer.id)
+    end
 
     def show
         @user = current_customer
     end
 
     def edit
-        @customer = Customer.find(params[:id])
+        @customer = Customer.find(current_customer.id)
     end
 
     def update
-        @customer = Customer.find(params[:id])#ユーザーの情報を特定する
+        @customer = Customer.find(current_customer.id)#ユーザーの情報を特定する
     if @customer.update(customer_params)#更新する
-           redirect_to customer_path(@customer.id)#,notice: 'You have updated user successfully.'
-        else 
+           redirect_to customer_customers_path(@customer.id)#,notice: 'You have updated user successfully.'
+        else
             render :edit
         end
     end
 
     def hide
-        @customer = Customer.find(params[:id])
-        #is_deletedカラムにフラグを立てる(defaultはfalse)
-        # @customer.update(is_deleted: false)
-        #ログアウトさせる
-        #reset_session
-        # flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
-        #redirect_to root_path
+        @customer = Customer.find(current_customer.id)
     end
     
     def withdrawal
-        @customer = Customer.find(params[:id])
+        @customer = Customer.find(current_customer.id)
         @customer.update(is_deleted: false)
         reset_session
-        redirect_to root_path
+        redirect_to customer_root_path
     end
-end
 
-private
-
-def correct_customer
-    @customer = Customer.find(params[:id])
-        if @customer != current_customer
-            redirect_back(fallback_location:customer_customers_hide_path)#多分、この記述で直前のぺージににリダイレクトできるはず
-        end
+    private
+	def customer_params
+		params.require(:customer).permit(:last_name,:first_name,:last_name_kana,:first_name_kana,:email,:postal_code,:address,:phone_number)
+	end
 end

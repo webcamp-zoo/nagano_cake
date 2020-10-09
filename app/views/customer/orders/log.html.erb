@@ -1,69 +1,70 @@
-<h2>注文情報確認</h2>
-<table class="table">
-    <thead>
-        <tr>
-            <th>商品名</th>
-            <th>単価（税込み）</th>
-            <th>数量</th>
-            <th>小計</th>
-        </tr>
-    </thead>
+<div class="container">
+    <div class="row">
+    <div class="col-md-8">
+        <h2>注文情報確認</h2>
+        <table class="table table table-bordered">
+            <thead>
+                <tr>
+                    <th>商品名</th>
+                    <th>単価（税込み）</th>
+                    <th>数量</th>
+                    <th>小計</th>
+                </tr>
+            </thead>
 
-    <% sum = 0 %>
-    <% @cart_products.each do |cart_product| %>
-    <tbody>
-        <tr>
-            <td><%= cart_product.product.name  %></td>
-            <td><%= ((cart_product.product.price * 1.1).round(2)).ceil %></td>
-            <td><%= cart_product.quantity %></td>
-            <td><%= ((cart_product.product.price * 1.1).round(2)).ceil * cart_product.quantity %></td>
-        </tr>
-    </tbody>
-    <% sum += ((cart_product.product.price * 1.1).round(2)).ceil * cart_product.quantity %>
-    <% end %>
-</table>
-<table>
-    <tbody>
-        <tr>
-            <th>送料</th>
-            <td>800</td><%#= shipping_cost %>
-        </tr>
-        <tr>
-            <th>商品合計</th>
-            <td><%= sum %></td>
-        </tr>
-        <tr>
-            <th>請求金額</th>
-            <td><%= sum + 800%></td>
-        </tr>
-    </tbody>
-</table>
-<h3>お支払い方法</h3>
-<%= @order.payment_method %>
+            <% sum = 0 %>
 
-<h3>お届け先</h3>
-<%= @order.name %>
-<%= @order.postal_code %>
-<%= @order.address %>
+            <% @cart_products.each do |cart_product| %>
+                <tbody>
+                    <tr>
+                        <td><%= cart_product.product.name  %></td>
+                        <td><%= ((cart_product.product.price * 1.1).round(2)).ceil %></td>
+                        <td><%= cart_product.quantity %></td>
+                        <td><%= ((cart_product.product.price * 1.1).round(2)).ceil * cart_product.quantity %></td>
+                    </tr>
+                </tbody>
+            <% sum += ((cart_product.product.price * 1.1).round(2)).ceil * cart_product.quantity %>
+            <% end %>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+            <table class="nav-item">
+                <tbody>
+                    <tr>
+                        <th>送料</th>
+                        <td>800</td><%#= shipping_cost %>
+                    </tr>
+                    <tr>
+                        <th>商品合計</th>
+                        <td><%= sum %></td>
+                    </tr>
+                    <tr>
+                        <th>請求金額</th>
+                        <td><%= sum + 800%></td>
+                    </tr>
+                </tbody>
+            </table>
+    </div>
 
-<%= form_with(url:customer_orders_path, method: :post, local: true) do |f| %>
+    <h3>お支払い方法</h3>
+    <%= @order.payment_method %>
 
-    <%= f.hidden_field :customer_id, value: current_customer.id %>
-    <%= f.hidden_field :payment_method, value: @order.payment_method %>
-    <%= f.hidden_field :total_price, value: sum %>
-    <%= f.hidden_field :name, value: @order.name %>
-    <%= f.hidden_field :address, value: @order.address %>
-    <%= f.hidden_field :postal_code, value: @order.postal_code %>
+    <h3>お届け先</h3>
+    <%= @order.name %>
+    <%= @order.postal_code %>
+    <%= @order.address %>
 
-    <%= f.submit "購入を確定する" %>
+    <%= form_with(url:customer_orders_path, method: :post, local: true) do |f| %>
+
+        <%= f.hidden_field :customer_id, value: current_customer.id %>
+        <%= f.hidden_field :payment_method, value: @order.payment_method %>
+        <%= f.hidden_field :total_price, value: sum %>
+        <%= f.hidden_field :name, value: @order.name %>
+        <%= f.hidden_field :address, value: @order.address %>
+        <%= f.hidden_field :postal_code, value: @order.postal_code %>
+
+        <%= f.submit "購入を確定する", class: "btn btn-success"%>
 <% end %>
-
-<%#= @order_products.each do |fs| %>
-        <%#= f.fields_for fs do |i| %>
-          <%#= i.hidden_field :product_id, value: @cart_products.product_id %>
-          <%#= i.hidden_field :order_id, value: @order %>
-          <%#= i.hidden_field :quantity, value: @cart_products.quantity %>
-          <%#= i.hidden_field :taxed_price, value: ((@cart_products.product.price * 1.1).round(2)).ceil %>
-        <%# end %>
-    <%# end %>
-
+</div>
+</div>
