@@ -1,64 +1,93 @@
-<h1>登録情報編集</h1>
+<div class="container">
+        <h1>登録情報編集</h1>
 
-    <table class="table">
+                    <%= form_for(@customer, url:customer_customers_path) do |f| %>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <%= f.label '名前' %>
+                            </div>
+                        
+                            <div class="col-md-3">
+                                <%= f.label :last_name, '（姓）' %>
+                                <%= f.text_field :last_name %>
+                            </div>
 
-        <%= form_for(@customer, url:customer_session_path) do |f| %>
-    <tr>
-        <td>
-            <div class="form-group">
-            <%= f.label :last_name, '名前（姓）' %>
-            <%= f.text_field :last_name %>
-            </div>
-        </td>
-        
-        <td>
-            <div class="form-group">
-            <%= f.label :first_name, '（名）' %>
-            <%= f.text_field :first_name %>
-            </div>
-        </td>
-    </tr>
+                            <div class="col-md-3">
+                                <%= f.label :first_name, '（名）' %>
+                                <%= f.text_field :first_name %>
+                            </div>
+                        </div>
 
-    <tr>
-        </td>
-            <div class="form-group">
-            <%= f.label :last_name_kana, '（セイ）' %>
-            <%= f.text_field :last_name_kana %>
-            </div>
-        </td>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <%= f.label 'フリガナ' %>
+                            </div>
 
-        <td>
-            <div class="form-group">
-            <%= f.label :first_name_kana, '（メイ）' %>
-            <%= f.text_field :first_name_kana %>
-            </div>
-        </td>
-    </tr>
+                            <div class="col-md-3">
+                                <%= f.label :last_name_kana, '（セイ）' %>
+                                <%= f.text_field :last_name_kana %>
+                            </div>
+                            
+                            <div class="col-md-3">
+                                <%= f.label :first_name_kana, '（メイ）' %>
+                                <%= f.text_field :first_name_kana %>
+                            </div>
+                        </div>
 
-        <div class="form-group">
-        <%= f.label :email, 'メールアドレス' %>
-        <%= f.email_field :email %>
-        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <%= f.label 'メールアドレス' %>
+                            </div>
+                            <div class="col-md-3">
+                                <%= f.label :email, 'メールアドレス' %>
+                                <%= f.email_field :email %>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <%= f.label '郵便番号' %>
+                            </div>
+                            <div class="col-md-3">
+                                <%= f.label :postal_code, '郵便番号' %>
+                                <%= f.text_field :postal_code %>
+                            </div>
+                        </div>
 
-        <div class="form-group">
-        <%= f.label :postal_code, '郵便番号' %>
-        <%= f.text_field :postal_code %>
-        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <%= f.label '住所' %>
+                            </div>
+                            <div class="col-md-6">
+                                <%= f.label :address, '住所' %>
+                                <%= f.text_field :address %>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <%= f.label '住所' %>
+                            </div>
+                            <div class="col-md-3">
+                                <%= f.label :phone_number, '電話番号' %>
+                                <%= f.text_field :phone_number %>
+                            </div>
+                        </div>
 
-        <div class="form-group">
-        <%= f.label :address, '住所' %>
-        <%= f.text_field :address %>
-        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <%= f.submit "編集内容を保存する", class: "btn btn-base-1 mt-20 btn-success"  %>
+                            </div>
+                <% end %>
+                            <div class="col-md-3">
+                            </div>
 
-        <div class="form-group">
-        <%= f.label :phone_number, '電話番号' %>
-        <%= f.text_field :address %>
-        </div>
-
-        <%= f.submit "編集内容を保存する" %>
-
-        <%= f.submit "退会する" %>
-
-<% end %>
-
-</table>
+                            <div class="col-md-3">
+                            <% if customer_signed_in? && @customer.id == current_customer.id %>
+                                <%= link_to "退会", customer_customers_withdrawal_path(current_customer), method: :patch, "data-confirm" => "本当に退会しますか？", class:"btn btn-danger" %>
+                                <% end %>
+                                #<%= form_for(@customer, url:customer_customers_withdrawal_path) do |f| %>
+                                    #<%= f.submit "退会する", class:"btn btn-danger" %>
+                                #<% end %>
+                            </div>
+                        </div>
+                        
+</div>

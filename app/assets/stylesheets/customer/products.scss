@@ -2,12 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.container {
+	margin: 50px 0;
+}
+
 .pagetitle {
 	font-family: 'M PLUS 1p', sans-serif;
 	color: #583822;
 	border-bottom: 1px solid #583822;
 	padding-bottom: 15px;
-	margin: 50px 0;
+	margin-bottom: 50px;
 }
 
 .pagetitle span {
@@ -26,9 +30,9 @@
 	margin-bottom: 50px;
 }
 
-.product-item:nth-of-type(4n) {
-	margin-right: 0;
-}
+//.product-item:nth-of-type(4n) {
+	//margin-right: 0;
+//}
 
 .product-item-name {
 	list-style: none;
@@ -47,16 +51,26 @@
 }
 
 .side-bar {
-	margin: 50px 0;
 	height: 700px;
+}
+
+.bar0 {
+	height: 40px;
+	width: 160px;
+	margin: 0 5px 5px 5px;
+	color: #583822;
+	background-color: #F2DF82;
+	font-family: 'M PLUS 1p', sans-serif;
+	text-align: center;
+	line-height: 40px;
 }
 
 .bar1 {
 	height: 60px;
 	width: 160px;
-	margin: 2px;
+	margin: 5px;
 	color: #583822;
-	background-color: #f8e58c;
+	background-color: #FCF8E3;
 	font-family: 'M PLUS 1p', sans-serif;
 	text-align: center;
 	line-height: 60px;
@@ -83,9 +97,26 @@
 
 
 //-------------------------------------------------------↑show--//
-//--------------------------------------------------------↓top--//
+//--------------------------------------------------------↓about--//
 
 .nagano {
 	margin: 50px 0;
 }
 
+//-------------------------------------------------------↑about--//
+//--------------------------------------------------------↓top--//
+
+
+.main-visual {
+	margin-bottom: 50px;
+}
+
+.top-img {
+	float: left;
+}
+
+.top-copy {
+	float: left;
+	text-align: center;
+	width: 425px;
+}

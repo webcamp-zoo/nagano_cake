@@ -17,7 +17,7 @@ class Customer::OrdersController < ApplicationController
         @addresses = Address.where(customer_id: current_customer.id)
     end
 
-    def log
+    def log #ここではまだ@orderの中にパラメーターを入れているだけで、セーブはしていない。
         @order = Order.new
         @order_product = OrderProduct.new
         @cart_products = current_customer.cart_products
@@ -43,13 +43,13 @@ class Customer::OrdersController < ApplicationController
         else
             @order.payment_method = 1
         end
-    end
+        @cart_products = current_customer.cart_products #current_customerに紐づくcart_productsモデルの情報を@cart_productsに入れる
+end
 
-    def create
-        @cart_products = current_customer.cart_products
-        order = Order.new(order_params)
+    def create #logページのhidden_fieldで送られてきた、情報をセーブする。
+        order = Order.new(order_params)#ストロングパラメーターでカラムを入れているので、order_paramsを記述するだけでOK！
         order.save
-        @cart_products = current_customer.cart_products
+        @cart_products = current_customer.cart_products #current_customerに紐づくcart_productsモデルの情報を@cart_productsに入れる（書き方を額にすれば、逆の意味も作れる）。
         @cart_products.each do |cart_product|
             @order_product = OrderProduct.new(
                 product_id: cart_product.product.id,
@@ -74,9 +74,8 @@ class Customer::OrdersController < ApplicationController
 
 
     private
-
 	def order_params
-		params.permit(:customer_id, :payment_method, :total_price, :name, :address, :postal_code)
+		params.permit(:customer_id, :payment_method, :total_price, :name, :address, :postal_code)#この中で指定したカラムがorder_paramsに入っていて、order_paramsを記述すると、入っている全てのカラムの情報を使う事ができる。
     end
 
     def address_params

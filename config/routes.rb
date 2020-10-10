@@ -22,12 +22,12 @@ Rails.application.routes.draw do
   end
 
   namespace :customer do
-
-    get "/customers/:id/hide" => "customers#hide", as: 'customers_hide'
-    patch "/customers/:id/withdrawal" => "customers#withdrawal", as: 'customers_withdrawal'
+    root 'customers#top'
+    patch "/customers/withdrawal" => "customers#withdrawal", as: 'customers_withdrawal'
     get 'orders/log'=>"orders#log"
     get 'orders/thanx'=>"orders#thanx"
     get 'products/top'
+    get "/customers/hide" => "customers#hide", as: 'customers_hide'
     get 'products/about'
 
     resources :products, only: [:index,:show]
