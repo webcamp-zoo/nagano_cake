@@ -34,6 +34,8 @@ class Customer::OrdersController < ApplicationController
             @order.postal_code = params[:postal_code]
             @order.address = params[:address]
             @order.name = params[:name]
+            @new_address = "address3"
+
         end
 
         if "クレジットカード" == params[:payment_method]
@@ -58,8 +60,9 @@ end
             cart_product.destroy
         end
 
-        if "address3"== params[:addresses]
-            current_customer.address.create(address_params)
+        if "address3"== params[:new_address]
+            new_address = Address.new(address_params)
+            new_address.save(address_params)
         end
 
         redirect_to customer_orders_thanx_path
@@ -75,6 +78,9 @@ end
 		params.permit(:customer_id, :payment_method, :total_price, :name, :address, :postal_code)#この中で指定したカラムがorder_paramsに入っていて、order_paramsを記述すると、入っている全てのカラムの情報を使う事ができる。
     end
 
+    def address_params
+        params.require(:address).permit(:customer_id, :name, :postal_code, :address)
+    end
     # def order_product_params
     #     params.permit(order_product:[:product_id, :order_id, :quantity, :taxed_price])
     # end
