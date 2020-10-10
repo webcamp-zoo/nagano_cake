@@ -1,10 +1,18 @@
 class Admin::OrdersController < ApplicationController
 
+	before_action :authenticate_admin!
+
 	def index
 		@orders = Order.all
 		@customers = Customer.all
-		@order_products = OrderProduct.all
 	end
+
+		def today_order_index
+			now = Time.current
+		    @orders = Order.where(created_at: now.all_day)
+			@customers = Customer.all
+		    render :index
+		end
 
 	def show
 		@order = Order.find(params[:id])

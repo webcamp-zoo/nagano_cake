@@ -1,7 +1,17 @@
 <h2>管理者画面</h2>
+	<p>全注文件数<span>
+					<%= link_to admin_orders_path do %>
+						<%= @orders.count %>件
+					<% end %>
+				</span>
+	</p>
 
-<p>本日の注文件数</p>
-
+	<p>本日の注文件数<span>
+						<%= link_to today_order_index_admin_orders_path do %>
+							<%= @today_orders.count %>件
+						<% end %>
+					</span>
+	</p>
 
 <%= link_to ' logout', destroy_admin_session_path, method: :delete %>
 

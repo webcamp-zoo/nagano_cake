@@ -1,6 +1,12 @@
 class Admin::ProductsController < ApplicationController
 
+  before_action :authenticate_admin!
 
+  def top
+    @orders = Order.all
+    now = Time.current
+    @today_orders = Order.where(created_at: now.all_day)
+  end
 
   def new
     @product = Product.new
