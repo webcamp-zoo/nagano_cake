@@ -27,9 +27,7 @@ Rails.application.routes.draw do
     get 'orders/log'=>"orders#log"
     get 'orders/thanx'=>"orders#thanx"
     get 'products/top'
-    resources :products, only: [:index,:show]
     get "/customers/hide" => "customers#hide", as: 'customers_hide'
-    resource :customers, only:[:edit, :update, :show]
     get 'products/about'
 
     resources :products, only: [:index,:show]
