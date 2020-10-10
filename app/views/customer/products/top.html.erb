@@ -6,6 +6,7 @@
 購入には会員登録が必要になります。
 
 <% @all_ranks.each do |f| %>
-    <%= attachment_image_tag(@product, :image, :fill, 100, 100, fallback: "no_image.jpg") %>
+    <%#= f.attachment_image_tag(@product, :image, :fill, 100, 100, fallback: "no_image.jpg") %>
+    <%= all_ranks.attachment_image_tag(@product, :image, :fill, 100, 100, fallback: "no_image.jpg") %>
     <%= f.name %>
 <% end %>

@@ -21,7 +21,7 @@
               <!--カスタマーログイン時-->
               <% if customer_signed_in? %>
                 <li class="nav-list-item">ようこそ、<%= current_customer.last_name %>さん！</li>
-                <li class="nav-list-item"><%= link_to "マイページ", customer_customer_path(current_customer),class: "link" %></li>
+                <li class="nav-list-item"><%= link_to "マイページ", customer_customers_path(current_customer),class: "link" %></li>
                 <li class="nav-list-item"><%= link_to "商品一覧", customer_products_path,class: "link" %></li>
                 <li class="nav-list-item"><%= link_to "カート", customer_cart_products_path,class: "link" %></li>
                 <li class="nav-list-item"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete,class: "link" %></li>

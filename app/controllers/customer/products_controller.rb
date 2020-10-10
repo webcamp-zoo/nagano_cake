@@ -1,8 +1,7 @@
 class Customer::ProductsController < ApplicationController
 
 	before_action :genre
-	before_action :authenticate_customer!, except: [:top]
-	
+	before_action :authenticate_customer!, except: [:top, :index, :about]
 	def top
 		@products = Product.all
 		@all_ranks = @products.find(OrderProduct.group(:product_id).order('count(product_id) desc').limit(4).pluck(:product_id))

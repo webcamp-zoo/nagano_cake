@@ -29,7 +29,7 @@ class Customer::CustomersController < ApplicationController
         @customer = Customer.find(current_customer.id)
         @customer.update(is_deleted: false)
         reset_session
-        redirect_to customer_root_path
+        redirect_to customer_products_top_path
     end
 
     private

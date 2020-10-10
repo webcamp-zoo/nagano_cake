@@ -42,11 +42,16 @@ class Customer::OrdersController < ApplicationController
             @order.payment_method = 1
         end
         @cart_products = current_customer.cart_products #current_customerに紐づくcart_productsモデルの情報を@cart_productsに入れる
+
 end
 
     def create #logページのhidden_fieldで送られてきた、情報をセーブする。
         order = Order.new(order_params)#ストロングパラメーターでカラムを入れているので、order_paramsを記述するだけでOK！
-        order.save
+        if @order.save
+            redirect_to :customer_orders_log_path #成功の場合
+        else        
+            render 'new' #失敗の場合 
+        end
         @cart_products = current_customer.cart_products #current_customerに紐づくcart_productsモデルの情報を@cart_productsに入れる（書き方を額にすれば、逆の意味も作れる）。
         @cart_products.each do |cart_product|
             @order_product = OrderProduct.new(
