@@ -12,8 +12,8 @@
 		<% end %>
 
 		<div>
-			<%#= attachment_image_tag f, :image, :fill, 100, 100, format: 'jpeg' %>
-		    <%= f.attachment_field :image %>
+			<%= f.attachment_field :image, class: 'img_field', style: 'display:none;' %>
+			<%#= attachment_image_tag f, :image, :fill, 100, 100, format: 'jpeg', fallback: 'no-image.jpg', onClick: "$('.img_field').click()", class: 'center-block img-thumbnail img-responsive img_prev' %>
 		</div>
 
 		<div>

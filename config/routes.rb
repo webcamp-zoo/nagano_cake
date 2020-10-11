@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   	registrations: 'devise/customers/registrations',
   	sessions: 'devise/customers/sessions'
   }
+
   namespace :admin do
     get 'products/top'=>"products#top"
   	resources :product_genres, only: [:index,:create,:edit,:update]
@@ -37,7 +38,7 @@ Rails.application.routes.draw do
     get 'products/about'
     resources :products, only: [:index,:show]
     resources :products, only: [:index,:show]
-    resources :customers, only:[:show, :edit, :update]
+    resource :customers, only:[:show, :edit, :update]
     resources :cart_products, only:[:index, :create, :update, :destroy]
     resources :addresses, except: [:show]
     resources :orders, only: [:new, :create, :show, :index]

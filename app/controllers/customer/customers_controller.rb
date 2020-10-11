@@ -7,10 +7,6 @@ class Customer::CustomersController < ApplicationController
         @customer = Customer.find(current_customer.id)
     end
 
-    def show
-        @user = current_customer
-    end
-
     def edit
         @customer = Customer.find(current_customer.id)
     end
@@ -27,12 +23,12 @@ class Customer::CustomersController < ApplicationController
     def hide
         @customer = Customer.find(current_customer.id)
     end
-    
+
     def withdrawal
         @customer = Customer.find(current_customer.id)
         @customer.update(is_deleted: false)
         reset_session
-        redirect_to customer_root_path
+        redirect_to customer_products_top_path
     end
 
     private
