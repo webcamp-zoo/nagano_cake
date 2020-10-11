@@ -2,8 +2,10 @@
 
     <h2>配送先編集</h2>
 
-            <%= form_with :model => @address, url:customer_address_path, method: :patch, local: true  do |f| %>
+<%= render "layouts/error_messages", model: @address %>
 
+
+            <%= form_with :model => @address, url:customer_address_path, method: :patch, local: true  do |f| %>
 
 			<div class="field row">
 				<%= f.label :郵便番号 %><span>(ハイフンなし)</span><br />
