@@ -1,5 +1,11 @@
 <div class="container">
+
+
+
+
+
     <h2>配送先登録/一覧</h2>
+    <%= render "layouts/error_messages", model: @address %>
 	<div class="actions row"><br />
 		<div class="col-xs-12">
 			<%= form_with :model => @address, url:customer_addresses_path, method: :post, local: true  do |f| %>
