@@ -1,46 +1,5 @@
 <div class="container">
-	<h2>マイページ</h2>
-
-	<p>登録情報</p>
-	<%= link_to edit_customer_customers_path(@user) do %>
-	<button type="button" class="btn btn-success btn-xs">編集する</button>
-	<% end %>
-	<%= link_to edit_customer_customers_path(@user) do %>
-	<button type="button" class="btn btn-success btn-xs">パスワードを変更する</button>
-	<% end %>
-	<table class="table">
-		<tbody>
-			<tr>
-				<th>氏名</th><td><%= @user.full_name %></td>
-			</tr>
-			<tr>
-				<th>カナ</th><td><%= @user.full_name_kana %></td>
-			</tr>
-			<tr>
-				<th>郵便番号</th><td><%= @user.postal_code %></td>
-			</tr>
-			<tr>
-				<th>住所</th><td><%= @user.address %></td>
-			</tr>
-			<tr>
-				<th>電話番号</th><td><%= @user.phone_number %></td>
-			</tr>
-			<tr>
-				<th>メールアドレス</th><td><%= @user.email %></td>
-			</tr>
-		</tbody>
-	</table>
-
-	<p>配送先</p>
-	<%= link_to	customer_addresses_path do %>
-	<button type="button" class="btn btn-success btn-xs">一覧を見る</button>
-	<% end %>
-
-	<p>注文履歴</p>
-	<%= link_to customer_orders_path do %>
-	<button type="button" class="btn btn-success btn-xs">一覧を見る</button>
-	<% end %>
-=======
+	
 	<div class="row">
 		<h2 class="pagetitle">マイページ</h2>
 	</div>
@@ -50,7 +9,7 @@
 				<p>登録情報</p>
 			</div>
 			<div class="pull-right">
-				<%= link_to edit_customer_customer_path(@customer) do %>
+				<%= link_to edit_customer_customers_path(@customer) do %>
 				<button type="button" class="btn btn-warning col-xs-4 mypage-btn">編集する</button>
 				<% end %>
 				<%= link_to edit_customer_password_path(@customer) do %>
