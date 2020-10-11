@@ -9,7 +9,18 @@ class Customer < ApplicationRecord
   has_many :orders
 
   has_many :addresses
-  
+
+
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :first_name_kana, presence: true
+  validates :last_name_kana, presence: true
+  validates :postal_code, presence: true
+  validates :address, presence: true
+  validates :phone_number, presence: true
+  validates :last_name, presence: true
+  validates :first_name_kana, presence: true
+
 
   #def self.full_name(customer)
      # customer.first_name + customer.last_name

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   	registrations: 'devise/customers/registrations',
   	sessions: 'devise/customers/sessions'
   }
+
   namespace :admin do
     get 'products/top'=>"products#top"
   	resources :product_genres, only: [:index,:create,:edit,:update]

@@ -5,7 +5,7 @@ class Customer::CustomersController < ApplicationController
     end
 
     def show
-        @user = current_customer
+        @customer = current_customer
     end
 
     def edit
@@ -24,7 +24,7 @@ class Customer::CustomersController < ApplicationController
     def hide
         @customer = Customer.find(current_customer.id)
     end
-    
+
     def withdrawal
         @customer = Customer.find(current_customer.id)
         @customer.update(is_deleted: false)
