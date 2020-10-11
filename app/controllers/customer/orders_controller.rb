@@ -29,7 +29,7 @@ class Customer::OrdersController < ApplicationController
         elsif "address2"== params[:addresses]
             @order.postal_code = Address.find(params[:address_id]).postal_code
             @order.address = Address.find(params[:address_id]).address
-            @order.name = current_customer.full_name
+            @order.name = Address.find(params[:address_id]).name
         elsif "address3"== params[:addresses]
             @order.postal_code = params[:postal_code]
             @order.address = params[:address]
