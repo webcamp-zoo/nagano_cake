@@ -35,14 +35,13 @@ class Customer::OrdersController < ApplicationController
             @order.address = params[:address]
             @order.name = params[:name]
             @new_address = "address3"
+
         end
             #@address = Address.new
-
             # @address.postal_code = params[:postal_code]
             # @address.address = params[:address]
             # @address.address = params[:address]
             # @address.save
-
 
             #Address.create(
                 # postal_code: params[:postal_code],
@@ -50,6 +49,7 @@ class Customer::OrdersController < ApplicationController
                 # name: params[:name],
                 # customer_id: current_customer.id
             # ) #入力された新しい住所をAddressモデルにレコードを作って保存する（Address.createの、createとは new + save のような物）
+
 
         if  params[:postal_code] == "" || params[:address] == "" || params[:name] == ""
             redirect_to new_customer_order_path,notice: '郵便番号、住所、宛名を全て記入してください'
@@ -93,12 +93,13 @@ class Customer::OrdersController < ApplicationController
     end
 
     private
-	def order_params
-		params.permit(:customer_id, :payment_method, :total_price, :name, :address, :postal_code)#この中で指定したカラムがorder_paramsに入っていて、order_paramsを記述すると、入っている全てのカラムの情報を使う事ができる。
+  
+	  def order_params
+		  params.permit(:customer_id, :payment_method, :total_price, :name, :address, :postal_code)#この中で指定したカラムがorder_paramsに入っていて、order_paramsを記述すると、入っている全てのカラムの情報を使う事ができる。
     end
 
     def address_params
-        params.require(:address).permit(:customer_id, :name, :postal_code, :address)
+       params.require(:address).permit(:customer_id, :name, :postal_code, :address)
     end
     # def order_product_params
     #     params.permit(order_product:[:product_id, :order_id, :quantity, :taxed_price])
