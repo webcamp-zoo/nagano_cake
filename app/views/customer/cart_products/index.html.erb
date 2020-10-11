@@ -17,7 +17,7 @@
 			<% sum = 0 %>
 			<% @cart_products.each do |cart_product| %>
 				<tr>
-					<td><%= attachment_image_tag(cart_product.product, :image, :fill, 100, 60, fallback: "no_image.jpg") %>
+					<td><%#= attachment_image_tag(cart_product.product, :image, :fill, 100, 60, fallback: "no_image.jpg") %>
 						<span class="table-product-name"><%= cart_product.product.name %></span></td>
 					<td><%= ((cart_product.product.price * 1.1).round(2)).ceil.to_s(:delimited) %>円</td>
 					<td><%= form_for(cart_product, url: customer_cart_product_path(cart_product.id)) do |f| %>

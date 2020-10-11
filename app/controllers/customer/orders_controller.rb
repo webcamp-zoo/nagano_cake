@@ -21,7 +21,7 @@ class Customer::OrdersController < ApplicationController
         @order = Order.new
         @order_product = OrderProduct.new
         @cart_products = current_customer.cart_products
-
+        
         if "address1"== params[:addresses]
             @order.postal_code = current_customer.postal_code
             @order.address = current_customer.address
@@ -35,20 +35,38 @@ class Customer::OrdersController < ApplicationController
             @order.address = params[:address]
             @order.name = params[:name]
             @new_address = "address3"
+            @address = Address.new
+            
+            # @address.postal_code = params[:postal_code]
+            # @address.address = params[:address]
+            # @address.address = params[:address]
+            # @address.save
 
-        end
-
+                
+            #Address.create(
+                # postal_code: params[:postal_code],
+                # address: params[:address],
+                # name: params[:name],
+                # customer_id: current_customer.id
+            # ) #入力された新しい住所をAddressモデルにレコードを作って保存する（Address.createの、createとは new + save のような物）
+        
+            if  params[:postal_code] == "" || params[:address] == "" || params[:name] == ""
+                redirect_to new_customer_order_path,notice: '郵便番号、住所、宛名を全て記入してください'
+            end
+    end
+        
         if "クレジットカード" == params[:payment_method]
             @order.payment_method = 0
         else
             @order.payment_method = 1
         end
         @cart_products = current_customer.cart_products #current_customerに紐づくcart_productsモデルの情報を@cart_productsに入れる
+
 end
 
     def create #logページのhidden_fieldで送られてきた、情報をセーブする。
         order = Order.new(order_params)#ストロングパラメーターでカラムを入れているので、order_paramsを記述するだけでOK！
-        order.save
+        if order.save
         @cart_products = current_customer.cart_products #current_customerに紐づくcart_productsモデルの情報を@cart_productsに入れる（書き方を額にすれば、逆の意味も作れる）。
         @cart_products.each do |cart_product|
             @order_product = OrderProduct.new(
@@ -58,7 +76,10 @@ end
                 taxed_price: ((cart_product.product.price * 1.1).round(2)).ceil)
             @order_product.save
             cart_product.destroy
+        else
+            render "new"
         end
+    end
 
         if "address3"== params[:new_address]
             new_address = Address.new(address_params)
