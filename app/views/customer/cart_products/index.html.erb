@@ -19,14 +19,14 @@
 				<tr>
 					<td><%= attachment_image_tag(cart_product.product, :image, :fill, 100, 60, fallback: "no_image.jpg") %>
 						<span class="table-product-name"><%= cart_product.product.name %></span></td>
-					<td><%= ((cart_product.product.price * 1.1).round(2)).ceil.to_s(:delimited) %></td>
+					<td><%= ((cart_product.product.price * 1.1).round(2)).ceil.to_s(:delimited) %>円</td>
 					<td><%= form_for(cart_product, url: customer_cart_product_path(cart_product.id)) do |f| %>
 						<%= f.text_field :quantity %>
 						<%= f.hidden_field :product_id, value: cart_product.product.id %>
 						<%= f.submit "変更", class: "btn btn-default" %>
 						<% end %>
 					</td>
-					<td><%= ((cart_product.product.price * cart_product.quantity.to_i * 1.1).round(2)).ceil.to_s(:delimited) %></td>
+					<td><%= ((cart_product.product.price * cart_product.quantity.to_i * 1.1).round(2)).ceil.to_s(:delimited) %>円</td>
 					<td><%= link_to "削除する", customer_cart_product_path(cart_product.id), method: :delete, class: "btn btn-danger" %>
 					</td>
 				</tr>
@@ -38,12 +38,12 @@
 			<%= link_to "買い物を続ける",customer_products_top_path, class: "btn btn-warning col-xs-2" %>
 			<div class="col-xs-offset-6  col-xs-4">
 				<table class="table table-bordered">
-					<thead>
+					<tbody>
 						<tr>
-							<th class="warning">合計金額</th>
-							<td><%= sum.ceil.to_s(:delimited) %></td>
+							<td class="table-head warning">合計金額</td>
+							<td class="table-head text-right"><%= sum.ceil.to_s(:delimited) %>円</td>
 						</tr>
-					</thead>
+					</tbody>
 				</table>
 			</div>
 		</div>

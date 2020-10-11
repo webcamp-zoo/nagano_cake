@@ -3,15 +3,15 @@
 <div class="container">
 
 <table class="table table-bordered">
-<h2>注文履歴一覧</h2>
+<h2 class="pagetitle">注文履歴一覧</h2>
 	<thead>
 		<tr>
-			<th>注文日</th>
-			<th>配送先</th>
-			<th>注文商品</th>
-			<th>支払い金額</th>
-			<th>ステータス</th>
-			<th>注文詳細</th>
+			<th class="table-head warning">注文日</th>
+			<th class="table-head warning">配送先</th>
+			<th class="table-head warning">注文商品</th>
+			<th class="table-head warning">支払い金額</th>
+			<th class="table-head warning">ステータス</th>
+			<th class="table-head warning">注文詳細</th>
 		</tr>
 	</thead>
     <tbody>
@@ -31,7 +31,7 @@
 	        <td><%= ((order.total_price + 800 * 1.1).round(2)).ceil %></td>
 	        <td><%= order.status %></td>
 			<td>
-				<%= link_to "表示する", customer_order_path(order), class: "btn btn-primary" %>
+				<%= link_to "表示する", customer_order_path(order), class: "btn btn-warning" %>
 			</td>
 		</tr>
 	<% end %>
