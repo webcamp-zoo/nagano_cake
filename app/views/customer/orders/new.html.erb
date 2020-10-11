@@ -5,6 +5,16 @@
         </div>
     </div>
     <h4>支払い方法</h4>
+
+    <% if @order.errors.any? %>
+    <div class="alert alert-warning">
+      <ul>
+        <% @order.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
         <%= form_with(url:customer_orders_log_path, method: :get, local: true) do |f| %>
 
             <%= f.radio_button :payment_method, :クレジットカード, checked: "checked"%>
@@ -12,9 +22,12 @@
 
             <%= f.radio_button :payment_method, :銀行振り込み %>
             <%= f.label :銀行振り込み, class: "payment_method_label" %>
+
             <h3>ご自身の住所</h3>
-            <% if @order.errors.any? %>
-            <%= f.radio_button :addresses, "address1" %>
+            <p id="notice">
+            <font color="red"><%= notice %></font>
+            </p>
+            <%= f.radio_button :addresses, "address1", checked: "checked" %>
                 <%= "#{current_customer.postal_code} #{current_customer.address}" %>
                 <%= "#{current_customer.first_name} #{current_customer.last_name}" %>
 
@@ -50,8 +63,8 @@
                             <%= f.text_field :name %>
                         </div>
                     </div>
-
+                    
                 <%= f.submit "確認画面へ進む",class: "btn btn-success" %>
-        <% end %>
+                
     <% end %>
 </div>
