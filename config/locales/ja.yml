@@ -40,3 +40,4 @@ ja:
       order_product:
         quantity: 数量
         taxed_price: 税込価格
+        name: 宛名
