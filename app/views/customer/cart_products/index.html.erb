@@ -1,5 +1,9 @@
 <div class="container">
 
+
+	<%#= render "layouts/error_messages", model: @cart_product %>
+
+
 	<h2 class="pagetitle">
 		ショッピングカート	<span><%= link_to "カートを空にする", customer_cart_products_path, method: :delete, class: "btn btn-danger btn-md pull-right" %></span>
 	</h2>

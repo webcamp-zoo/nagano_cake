@@ -3,7 +3,9 @@
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-  <%= render "devise/customers/shared/error_messages", resource: resource %>
+  <%#= render "devise/customers/shared/error_messages", resource: resource %>
+  <%= render "layouts/error_messages", model: resource %>
+
 
     <div class="field">
       <%= f.label :メールアドレス %>

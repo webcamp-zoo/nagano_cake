@@ -2,8 +2,41 @@ ja:
   activerecord:
     models:
       address: 住所
+      product_genre: 商品ジャンル
+      cart_product: カート内商品
+      product: 商品
+      customer: 顧客
+      order: 注文
+      order_product: 注文商品
     attributes:
       address:
         address: 住所
         postal_code: 郵便番号
         name: 宛名
+      product_genre:
+        name: ジャンル名
+      cart_product:
+        quantity: 数量
+      product:
+        name: 商品名
+        introduction: 商品説明
+        price: 税抜価格
+        product_genre: 商品ジャンル
+        product_genre_id: 商品ジャンル
+      customer:
+        first_name: 名
+        last_name: 姓
+        first_name_kana: 名（カナ）
+        last_name_kana: 姓（カナ）
+        postal_code: 郵便番号
+        address: 住所
+        phone_number: 電話番号
+        email: メールアドレス
+        password: パスワード
+      order:
+        adress: 住所
+        postal_code: 郵便番号
+        name: 宛名
+      order_product:
+        quantity: 数量
+        taxed_price: 税込価格

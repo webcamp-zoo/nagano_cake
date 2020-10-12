@@ -1,15 +1,12 @@
- <h2>商品新規登録</h2>
-    <%= form_for [:admin, @product] do |f| %>
+ 
+<div class="container">
 
-	    <% if @product.errors.any? %>
-			<div>
-			    <ul style="color: red">
-			       <% @product.errors.full_messages.each do |message| %>
-			         <li>error : <%= message %></li>
-			       <% end %>
-			    </ul>
-			</div>
-		<% end %>
+
+ <h2>商品新規登録</h2>
+      <%= form_with :model => @product, url:admin_products_path(@product), method: :post, local: true  do |f| %>
+
+	    <%= render "layouts/error_messages", model: @product %>
+
 
 		<div>
 			<%= f.attachment_field :image, class: 'img_field', style: 'display:none;' %>
@@ -17,18 +14,36 @@
 		</div>
 
 		<div>
-			<%= f.label :"商品名" %>
+			<div class="field row">
+			<%= f.label :"商品名" %><br />
 			<%= f.text_field :name %>
-			<%= f.label :"商品説明" %>
+		    </div>
+
+		    <div class="field row">
+			<%= f.label :"商品説明" %><br />
 			<%= f.text_area :introduction %>
-			<%= f.label :"ジャンル" %>
+		    </div>
+
+
+			<div class="field row">
+			<%= f.label :"ジャンル" %><br />
 			<%#= f.select :name, options_for_select(ProductGenre.name), {prompt: "選択してください"}, class: "name-select"%>
 			<%= f.collection_select(:product_genre_id, @genres, :id, :name, prompt: "--選択してください--") %>
-			<%= f.label :"税抜価格" %>
+		    </div>
+
+			<div class="field row">
+			<%= f.label :"税抜価格" %><br />
 			<%= f.text_field :price %>円
-			<%= f.label :"販売ステータス" %>
+		    </div>
+
+			<div class="field row">
+			<%= f.label :"販売ステータス" %><br />
 			<%= f.select :is_active, [['販売中', true], ['販売停止', false]] %>
+            </div>
+
+            <div class="actions row"><br />
 		    <%= f.submit "新規登録" %>
-		</div>
+		    </div>
 
     <% end %>
+</div>
