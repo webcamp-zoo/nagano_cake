@@ -9,8 +9,8 @@
 
 
 		<div>
-			<%= f.attachment_field :image, class: 'img_field', style: 'display:none;' %>
-			<%#= attachment_image_tag f, :image, :fill, 100, 100, format: 'jpeg', fallback: 'no-image.jpg', onClick: "$('.img_field').click()", class: 'center-block img-thumbnail img-responsive img_prev' %>
+			<%= f.attachment_field :image, class: 'img_field' %>
+			<%= attachment_image_tag @product, :image, size:'200x200', format: 'jpeg', fallback: 'no_image.jpg', size:'200x200', onClick: "$('.img_field').click()", class: 'img-thumbnail img-responsive img_prev' %>
 		</div>
 
 		<div>
