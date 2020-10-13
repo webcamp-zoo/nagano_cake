@@ -2,6 +2,9 @@
     <div class="row">
         <h2 class="pagetitle">登録情報編集</h2>
     </div>
+
+    <%= render "layouts/error_messages", model: @customer %>
+
     <div class="row">
         <%= form_with :model => @customer, url:customer_customers_path, class:"form-horizontal" do |f| %>
             <div class="form-group">

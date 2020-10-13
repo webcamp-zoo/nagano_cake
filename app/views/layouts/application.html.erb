@@ -30,6 +30,7 @@
                 <li class="nav-list-item"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete,class: "link" %></li>
               <!--カスタマーログイン時-->
 
+
               <!--管理者ログイン時-->
               <% elsif admin_signed_in? %>
                 <li class="nav-list-item"><%= link_to "トップページ", customer_products_top_path,class: "link" %></li>
@@ -49,6 +50,9 @@
                 <li class="nav-list-item"><%= link_to "ログイン", new_customer_session_path,class: "link" %></li>
               <!-- カスタマーログイン外 -->
               <% end %>
+
+             
+
 
             </ul>
           </div>

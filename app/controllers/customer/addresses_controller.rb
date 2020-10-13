@@ -15,7 +15,7 @@ class Customer::AddressesController < ApplicationController
           redirect_to request.referer, notice: "You have created address successfully."
         else
           @addresses = Address.all
-          redirect_to request.referer
+          render "index"
         end
 	end
 
@@ -34,7 +34,7 @@ class Customer::AddressesController < ApplicationController
 		if @address.update(address_params)
         redirect_to customer_addresses_path(@address), notice: "You have updated book successfully."
         else
-        redirect_to customer_addresses_path
+        render "edit"
         end
 	end
 

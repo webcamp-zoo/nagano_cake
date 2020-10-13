@@ -8,12 +8,13 @@ class Admin::ProductGenresController < ApplicationController
   end
 
   def create
-    genre = ProductGenre.new(genre_params)
+    @genre = ProductGenre.new(genre_params)
 
-    if genre.save
+    if @genre.save
        redirect_to admin_product_genres_path, notice: "You have created new genre successfully."
     else
-      redirect_to request.referer
+      @genres = ProductGenre.all
+      render :index
     end
   end
 
@@ -26,7 +27,7 @@ class Admin::ProductGenresController < ApplicationController
     if @genre.update(genre_params)
 	   redirect_to admin_product_genres_path, notice: "You have updated genre successfully."
     else
-       redirect_to request.referer
+       render :edit
     end
   end
 

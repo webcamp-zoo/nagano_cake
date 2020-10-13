@@ -2,6 +2,9 @@
 
     <h2>会員情報編集</h2>
 
+    <%= render "layouts/error_messages", model: @customer %>
+
+
       <%= form_with :model => @customer, url:admin_customer_path(@customer), method: :patch, local: true  do |f| %>
 			<div class="field row">
 				<%= f.label :会員ID %>

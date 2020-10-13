@@ -2,6 +2,9 @@
 	<div class="row">
     	<h2 class="pagetitle">配送先登録/一覧</h2>
     </div>
+
+    <%= render "layouts/error_messages", model: @address %>
+
     <div class="row">
     	<%= form_with :model => @address, url:customer_addresses_path, method: :post, local: true, class:"form-horizontal" do |f| %>
 		  <div class="form-group">

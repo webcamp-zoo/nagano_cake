@@ -15,10 +15,11 @@ class Admin::ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    @genres = ProductGenre.where(is_active: true)
     if @product.save
       redirect_to admin_products_path, notice: "You have created new genre successfully."
     else
-      redirect_to request.referer
+      render :new
     end
   end
 
@@ -38,6 +39,7 @@ class Admin::ProductsController < ApplicationController
 
   def update
   	@product = Product.find(params[:id])
+    @genres = ProductGenre.where(is_active: true)
   	if @product.update(product_params)
       redirect_to admin_products_path, notice: "You have updated product successfully."
     else

@@ -3,6 +3,8 @@
     	<h2 class="pagetitle">配送先編集</h2>
     </div>
 
+    <%= render "layouts/error_messages", model: @address %>
+
     <div class="row">
     	<%= form_with :model => @address, url:customer_address_path, method: :patch, local: true, class:"form-horizontal" do |f| %>
 		  <div class="form-group">
