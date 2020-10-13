@@ -12,6 +12,7 @@ class Customer::ProductsController < ApplicationController
 	end
 
 	def show
+		@tax = 1.1
 		@product = Product.find(params[:id])
 		@cart_product = CartProduct.new
   	end

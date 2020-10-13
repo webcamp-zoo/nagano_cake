@@ -14,7 +14,7 @@
 					<%= @product.introduction %>
 				</div>
 				<div class="product-show-price">
-					<h3 class="product-item-price">¥<%= @product.price %>(税込)</h3>
+					<h3 class="product-item-price">¥<%= ((@product.price * @tax).round(2)).ceil.to_s(:delimited) %>(税込)</h3>
 				</div>
 				<div class="row">
 					<div class="col-xs-offset-4 col-xs-8">

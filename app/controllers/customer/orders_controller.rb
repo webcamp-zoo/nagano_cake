@@ -41,6 +41,7 @@ class Customer::OrdersController < ApplicationController
                 name: params[:name],
                 customer_id: current_customer.id
              ) #入力された新しい住所をAddressモデルにレコードを作って保存する（Address.createの、createとは new + save のような物）
+        end
 
         # if  params[:postal_code] == "" || params[:address] == "" || params[:name] == ""
         #     redirect_to new_customer_order_path,notice: '郵便番号、住所、宛名を全て記入してください'
