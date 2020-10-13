@@ -13,14 +13,15 @@
 			</div>
 
 			<h2 class="pagetitle">オススメ商品</h2>
-			<% @all_ranks.each do |all_rank| %>
+			<% @all_ranks.each.with_index(1) do |all_rank,i| %>
 				<div class="product-item clearfix">
 					<%= link_to customer_product_path(all_rank) do %>
 						<div class="product-item-img">
 							<%= attachment_image_tag(all_rank, :image, :fill, 200, 150, fallback: "no_image.jpg") %>
 						</div>
 						<div class="product-item-name">
-					   	 <%= all_rank.name %>
+							<p><%= i %> 位</p>
+					   	 	<%= all_rank.name %>
 					   	</div>
 					<% end %>
 					<% if all_rank.is_active == true %>

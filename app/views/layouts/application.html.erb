@@ -14,15 +14,16 @@
   <body>
     <header>
         <div class="header-container clearfix">
-            <%= link_to customer_products_top_path do %>
-                    <div class="headline">nagano cake</div>
-            <% end %>
-          <nav>
+            <div class="headline">nagano cake</div>
+        </div>
+        <nav class="nav">
+          <div class="header-container clearfix">
             <ul class="nav-list">
 
               <!--カスタマーログイン時-->
               <% if customer_signed_in? %>
                 <li class="nav-list-item">ようこそ、<%= current_customer.last_name %>さん！</li>
+                <li class="nav-list-item"><%= link_to "トップページ", customer_products_top_path,class: "link" %></li>
                 <li class="nav-list-item"><%= link_to "マイページ", customer_customers_path(current_customer),class: "link" %></li>
                 <li class="nav-list-item"><%= link_to "商品一覧", customer_products_path,class: "link" %></li>
                 <li class="nav-list-item"><%= link_to "カート", customer_cart_products_path,class: "link" %></li>
@@ -32,6 +33,7 @@
 
               <!--管理者ログイン時-->
               <% elsif admin_signed_in? %>
+                <li class="nav-list-item"><%= link_to "トップページ", customer_products_top_path,class: "link" %></li>
                 <li class="nav-list-item"><%= link_to "商品一覧", admin_products_path,class: "link" %></li>
                 <li class="nav-list-item"><%= link_to "会員一覧", admin_customers_path,class: "link" %></li>
                 <li class="nav-list-item"><%= link_to "注文履歴一覧", admin_orders_path,class: "link" %></li>
@@ -41,10 +43,11 @@
 
               <!-- カスタマーログイン外 -->
               <% else %>
+                <li class="nav-list-item"><%= link_to "トップページ", customer_products_top_path,class: "link" %></li>
                 <li class="nav-list-item"><%= link_to "About", customer_products_about_path,class: "link" %></li>
                 <li class="nav-list-item"><%= link_to "商品一覧", customer_products_path,class: "link" %></li>
                 <li class="nav-list-item"><%= link_to "新規登録", new_customer_registration_path,class: "link" %></li>
-                <li class="nav-list-item"><%= link_to "ログイン（カスタマー）", new_customer_session_path,class: "link" %></li>
+                <li class="nav-list-item"><%= link_to "ログイン", new_customer_session_path,class: "link" %></li>
               <!-- カスタマーログイン外 -->
               <% end %>
 
@@ -52,9 +55,8 @@
 
 
             </ul>
-          </nav>
           </div>
-        </div>
+        </nav>
     </header>
 
       <%= yield %>

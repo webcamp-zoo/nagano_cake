@@ -31,9 +31,7 @@
 }
 
 header {
-	background-color: #83ccd2;
 	width: 100%;
-	height: 90px;
 }
 
 
@@ -44,32 +42,51 @@ header {
 }
 
 .headline {
-	float: left;
 	font-size: 35px;
-	color: white;
+	color: #83ccd2;
 	font-family: 'Montserrat', sans-serif;
 	line-height: 90px;
+	padding: 5px 0;
+	text-decoration: none;
+	display: inline;
+}
+
+.headline:hover {
+	text-decoration: none;
+
+}
+
+.nav {
+	width: 100%;
+	background-color: #83ccd2;
 }
 
 .nav-list {
 	font-size: 14px;
-	float: right;
+
 }
 
 .nav-list-item {
 	float: left;
 	list-style: none;
-	line-height: 90px;
-	padding: 0 20px;
+	line-height: 50px;
+	padding: 0 40px;
 	color: white;
 	font-family: 'M PLUS 1p', sans-serif;
 }
+
+.nav-list-item:nth-child(1) {
+	padding: 0 30px 0 0;
+}
+
 
 .link {
 	list-style: none;
 	color: white;
 	font-family: 'M PLUS 1p', sans-serif;
 }
+
+
 
 
 footer {

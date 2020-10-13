@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   end
 
   namespace :customer do
-    root 'customers#top'
+
     patch "/customers/withdrawal" => "customers#withdrawal", as: 'customers_withdrawal'
     get 'orders/log'=>"orders#log"
     get 'orders/thanx'=>"orders#thanx"
@@ -45,7 +45,7 @@ Rails.application.routes.draw do
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-
+  root :to => 'customer/products#top'
 
   delete '/customer/cart_products' => 'customer/cart_products#destroy_all'
 

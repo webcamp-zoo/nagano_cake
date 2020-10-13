@@ -14,7 +14,7 @@ class Customer::AddressesController < ApplicationController
         if @address.save
           redirect_to request.referer, notice: "You have created address successfully."
         else
-          @addresses = Address.all
+          @addresses = current_customer.addresses
           render "index"
         end
 	end
