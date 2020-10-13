@@ -4,22 +4,22 @@
 	</div>
 	<div class="row">
 		<div class="col-xs-6">
-			<div class="pull-left">
-				<p>登録情報</p>
-			</div>
-			<div class="pull-right">
-				<%= link_to edit_customer_customers_path(@customer) do %>
-				<button type="button" class="btn btn-warning col-xs-4 mypage-btn">編集する</button>
-				<% end %>
-				<%= link_to edit_customer_password_path(@customer) do %>
-				<button type="button" class="btn btn-warning col-xs-8 mypage-btn">パスワードを変更する</button>
-				<% end %>
-			</div>
+				<div class="pull-left">
+					<h3 class="subtitle">登録情報</h3>
+				</div>
+				<div class="pull-right">
+					<%= link_to edit_customer_customers_path(@customer) do %>
+					<button type="button" class="btn btn-warning col-xs-4 mypage-btn1">編集する</button>
+					<% end %>
+					<%= link_to edit_customer_registration_path do %>
+					<button type="button" class="btn btn-warning col-xs-8 mypage-btn">パスワードを変更する</button>
+					<% end %>
+				</div>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-xs-6">
-			<table class="table">
+			<table class="table mypage-table">
 				<tbody>
 					<tr>
 						<th class="table-head warning">氏名</th><td><%= @customer.full_name %></td>
@@ -46,7 +46,7 @@
 	<div class="row">
 		<div class="col-xs-6">
 			<div class="pull-left">
-				<p>配送先</p>
+				<h3 class="subtitle">配送先</h3>
 			</div>
 			<div class="pull-right">
 				<%= link_to	customer_addresses_path do %>
@@ -58,7 +58,7 @@
 	<div class="row">
 		<div class="col-xs-6">
 			<div class="pull-left">
-				<p>注文履歴</p>
+				<h3 class="subtitle">注文履歴</h3>
 			</div>
 			<div class="pull-right">
 				<%= link_to customer_orders_path do %>

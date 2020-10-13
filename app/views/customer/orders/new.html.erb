@@ -5,25 +5,19 @@
 
     <%= form_with(url:customer_orders_log_path, method: :get, local: true) do |f| %>
     <h3 class="subtitle">支払い方法</h3>
-        <div class="sab-text">
-            <%= f.radio_button :payment_method, :クレジットカード, checked: "checked"%>
-            <%= f.label :クレジットカード, class: "payment_method_label" %>
-        </div>
-        <div class="sab-text">
-            <%= f.radio_button :payment_method, :銀行振り込み %>
-            <%= f.label :銀行振り込み, class: "payment_method_label" %>
-        </div>
+        <h4 class="sab-text"><%= f.radio_button :payment_method, :クレジットカード, checked: "checked"%>  クレジットカード</h4>
+        <h4 class="sab-text"><%= f.radio_button :payment_method, :銀行振り込み %>  銀行振り込み</h4>
     <h3 class="subtitle">お届け先</h3>
-        <h4 class="sab-text"><%= f.radio_button :addresses, "address1", checked: "checked" %>ご自身の住所</h4>
+        <h4 class="sab-text"><%= f.radio_button :addresses, "address1", checked: "checked" %>  ご自身の住所</h4>
         <div class="sab-text">
             <%= "#{current_customer.postal_code} #{current_customer.address}" %>
-            <%= "#{current_customer.first_name} #{current_customer.last_name}" %>
+            <%= "#{current_customer.last_name} #{current_customer.first_name}" %>
         </div>
-        <h4 class="sab-text"><%= f.radio_button :addresses, "address2" %>登録済住所から選択</h4>
+        <h4 class="sab-text"><%= f.radio_button :addresses, "address2" %>  登録済住所から選択</h4>
         <div class="sab-text">
             <%= f.collection_select(:address_id, @addresses, :id, :order_address) %>
         </div>
-        <h4 class="sab-text"><%= f.radio_button :addresses, "address3" %> 新しいお届け先 </h4>
+        <h4 class="sab-text"><%= f.radio_button :addresses, "address3" %>  新しいお届け先 </h4>
         <div class="sab-text">
             <div class="row">
                 <div class="col-xs-3">
@@ -52,6 +46,6 @@
                 </div>
             </div>
         </div>
-        <%= f.submit "確認画面へ進む",class: "btn btn-success" %>
+        <%= f.submit "確認画面へ進む", class: "btn btn-success" %>
     <% end %>
 </div>

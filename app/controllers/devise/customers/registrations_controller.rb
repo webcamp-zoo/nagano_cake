@@ -71,4 +71,8 @@ class Devise::Customers::RegistrationsController < Devise::RegistrationsControll
     customer_products_top_path
   end
 
+  def edit_customer_registration_path_for(resource)
+    customer_customers_path(resource)
+  end
+
 end
